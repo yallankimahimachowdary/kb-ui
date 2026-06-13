@@ -139,7 +139,7 @@ function UploadWizard({ onClose, onSuccess }) {
                 : 'You material is not indexed yet.'}
             </p>
             <button
-              onClick={() => result === 'success' ? onSuccess() : onClose()}
+              onClick={() => result === 'success' ? onSuccess(files, annotation) : onClose()}
               style={{
                 padding: '8px 32px', borderRadius: '8px', border: 'none',
                 background: result === 'success' ? '#0d9488' : '#ef4444',
@@ -171,7 +171,6 @@ function UploadWizard({ onClose, onSuccess }) {
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         borderBottom: '1px solid #e2e8f0'
       }}>
-        {/* Cancel */}
         <button
           onClick={() => setShowCancelModal(true)}
           style={{
@@ -180,7 +179,6 @@ function UploadWizard({ onClose, onSuccess }) {
           }}
         >Cancel</button>
 
-        {/* Steps */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
             <span style={stepDot(1)} />
@@ -198,7 +196,6 @@ function UploadWizard({ onClose, onSuccess }) {
           </div>
         </div>
 
-        {/* Proceed / Index button */}
         {step === 1 && (
           <button
             onClick={() => setStep(2)}
@@ -272,7 +269,6 @@ function UploadWizard({ onClose, onSuccess }) {
               />
             </div>
 
-            {/* Uploaded files */}
             {files.length > 0 && (
               <div style={{ marginTop: '20px' }}>
                 <p style={{ color: '#64748b', fontSize: '13px', marginBottom: '8px' }}>Uploaded Material</p>
@@ -379,7 +375,21 @@ function Materials() {
       {showWizard && (
         <UploadWizard
           onClose={() => setShowWizard(false)}
-          onSuccess={() => setShowWizard(false)}
+          onSuccess={(uploadedFiles, annotation) => {
+            const newMaterials = uploadedFiles.map((file, index) => ({
+              id: Date.now() + index,
+              file_name: file.name,
+              type: 'PDF',
+              size: (file.size / 1024).toFixed(0) + 'KB',
+              status: 'Active',
+              uploaded_at: new Date().toLocaleString('en-GB', {
+                day: '2-digit', month: '2-digit', year: 'numeric',
+                hour: '2-digit', minute: '2-digit', hour12: true
+              }).replace(',', ' |')
+            }))
+            setMaterials(prev => [...newMaterials, ...prev])
+            setShowWizard(false)
+          }}
         />
       )}
 
