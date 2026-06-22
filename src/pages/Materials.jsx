@@ -1,31 +1,15 @@
-import { useState, useRef } from 'react'
-
-const fakeData = [
-  { id: 1, file_name: 'User manual.pdf', type: 'PDF', size: '40KB', status: 'Active', uploaded_at: '12/12/2024 | 12:00 PM' },
-  { id: 2, file_name: 'User manual.pdf', type: 'PDF', size: '40KB', status: 'Active', uploaded_at: '12/12/2024 | 12:00 PM' },
-  { id: 3, file_name: 'User manual.pdf', type: 'PDF', size: '40KB', status: 'Inactive', uploaded_at: '12/12/2024 | 12:00 PM' },
-  { id: 4, file_name: 'User manual.pdf', type: 'PDF', size: '40KB', status: 'Active', uploaded_at: '12/12/2024 | 12:00 PM' },
-  { id: 5, file_name: 'User manual.pdf', type: 'PDF', size: '40KB', status: 'Active', uploaded_at: '12/12/2024 | 12:00 PM' },
-  { id: 6, file_name: 'User manual.pdf', type: 'PDF', size: '40KB', status: 'Active', uploaded_at: '12/12/2024 | 12:00 PM' },
-  { id: 7, file_name: 'User manual.pdf', type: 'PDF', size: '40KB', status: 'Active', uploaded_at: '12/12/2024 | 12:00 PM' },
-  { id: 8, file_name: 'User manual.pdf', type: 'PDF', size: '40KB', status: 'Inactive', uploaded_at: '12/12/2024 | 12:00 PM' },
-  { id: 9, file_name: 'User manual.pdf', type: 'PDF', size: '40KB', status: 'Active', uploaded_at: '12/12/2024 | 12:00 PM' },
-  { id: 10, file_name: 'User manual.pdf', type: 'PDF', size: '40KB', status: 'Active', uploaded_at: '12/12/2024 | 12:00 PM' },
-  { id: 11, file_name: 'User manual.pdf', type: 'PDF', size: '40KB', status: 'Active', uploaded_at: '12/12/2024 | 12:00 PM' },
-  { id: 12, file_name: 'User manual.pdf', type: 'PDF', size: '40KB', status: 'Active', uploaded_at: '12/12/2024 | 12:00 PM' },
-]
-
-const PAGE_SIZE = 12
+import { useState, useEffect, useRef } from 'react'
+import { getMaterials, updateMaterialStatus, deleteMaterial, uploadMaterial, finalizeMaterial } from '../api'
 
 // ─── UPLOAD WIZARD ────────────────────────────────────────────
 function UploadWizard({ onClose, onSuccess }) {
   const [step, setStep] = useState(1)
   const [files, setFiles] = useState([])
   const [annotation, setAnnotation] = useState('')
-  const [progress, setProgress] = useState(0)
-  const [result, setResult] = useState(null)
   const [dragOver, setDragOver] = useState(false)
   const [showCancelModal, setShowCancelModal] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
   const fileInputRef = useRef()
 
   const handleFiles = (selected) => {
@@ -39,18 +23,26 @@ function UploadWizard({ onClose, onSuccess }) {
     setFiles(files.filter((_, i) => i !== index))
   }
 
-  const startIndexing = () => {
-    setStep(3)
-    setProgress(0)
-    let p = 0
-    const interval = setInterval(() => {
-      p += 10
-      setProgress(p)
-      if (p >= 100) {
-        clearInterval(interval)
-        setResult('success')
-      }
-    }, 300)
+  const handleFinalize = async () => {
+    setLoading(true)
+    setError(null)
+    try {
+      // Step 1 — Upload file
+      const uploadResult = await uploadMaterial(files[0])
+      const tracking_token = uploadResult.tracking_token
+
+      // Step 2 — Finalize with annotation
+      await finalizeMaterial(tracking_token, annotation)
+
+      // Step 3 — Show processing then success
+      setStep(3)
+      setTimeout(() => {
+        onSuccess()
+      }, 2000)
+    } catch (err) {
+      setError(err.message)
+      setLoading(false)
+    }
   }
 
   const stepDot = (s) => ({
@@ -106,46 +98,6 @@ function UploadWizard({ onClose, onSuccess }) {
                 cursor: 'pointer', fontSize: '14px'
               }}>Yes</button>
             </div>
-          </div>
-        </div>
-      )}
-
-      {/* Result Modal */}
-      {result && (
-        <div style={{
-          position: 'fixed', inset: 0,
-          background: 'rgba(0,0,0,0.5)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          zIndex: 999
-        }}>
-          <div style={{
-            background: 'white', borderRadius: '12px',
-            padding: '32px', width: '360px', textAlign: 'center'
-          }}>
-            <div style={{
-              width: '48px', height: '48px', borderRadius: '50%',
-              background: result === 'success' ? '#d1fae5' : '#fee2e2',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              margin: '0 auto 16px', fontSize: '22px'
-            }}>
-              {result === 'success' ? '✅' : '❌'}
-            </div>
-            <h3 style={{ color: '#1e293b', marginBottom: '8px' }}>
-              {result === 'success' ? 'Indexing Success' : 'Indexing Failed'}
-            </h3>
-            <p style={{ color: '#64748b', fontSize: '14px', marginBottom: '24px' }}>
-              {result === 'success'
-                ? 'You material has been indexed successfully.'
-                : 'You material is not indexed yet.'}
-            </p>
-            <button
-              onClick={() => result === 'success' ? onSuccess(files, annotation) : onClose()}
-              style={{
-                padding: '8px 32px', borderRadius: '8px', border: 'none',
-                background: result === 'success' ? '#0d9488' : '#ef4444',
-                color: 'white', cursor: 'pointer', fontSize: '14px'
-              }}
-            >OK</button>
           </div>
         </div>
       )}
@@ -220,8 +172,8 @@ function UploadWizard({ onClose, onSuccess }) {
               }}
             >Previous</button>
             <button
-              onClick={startIndexing}
-              disabled={annotation.trim().length === 0}
+              onClick={handleFinalize}
+              disabled={annotation.trim().length === 0 || loading}
               style={{
                 background: annotation.trim().length === 0 ? '#e2e8f0' : '#0d9488',
                 color: annotation.trim().length === 0 ? '#94a3b8' : 'white',
@@ -230,7 +182,7 @@ function UploadWizard({ onClose, onSuccess }) {
                 cursor: annotation.trim().length === 0 ? 'not-allowed' : 'pointer',
                 fontSize: '14px'
               }}
-            >Index Material</button>
+            >{loading ? 'Uploading...' : 'Index Material'}</button>
           </div>
         )}
         {step === 3 && <div style={{ width: '100px' }} />}
@@ -238,6 +190,18 @@ function UploadWizard({ onClose, onSuccess }) {
 
       {/* Content */}
       <div style={{ flex: 1, padding: '40px', background: '#f8fafc', overflowY: 'auto' }}>
+
+        {/* Error message */}
+        {error && (
+          <div style={{
+            background: '#fee2e2', color: '#ef4444',
+            padding: '12px 16px', borderRadius: '8px',
+            marginBottom: '16px', fontSize: '14px',
+            maxWidth: '600px', margin: '0 auto 16px'
+          }}>
+            ❌ {error}
+          </div>
+        )}
 
         {/* STEP 1 */}
         {step === 1 && (
@@ -259,11 +223,11 @@ function UploadWizard({ onClose, onSuccess }) {
                 Drag & drop file or <span style={{ color: '#0d9488', textDecoration: 'underline' }}>Browse</span>
               </p>
               <p style={{ color: '#94a3b8', fontSize: '12px', marginTop: '8px' }}>
-                Max file size is 500MB. Supported file type: pdf
+                Max file size is 25MB. Supported file type: pdf
               </p>
               <input
                 ref={fileInputRef}
-                type="file" accept=".pdf" multiple
+                type="file" accept=".pdf"
                 style={{ display: 'none' }}
                 onChange={(e) => handleFiles(e.target.files)}
               />
@@ -323,19 +287,11 @@ function UploadWizard({ onClose, onSuccess }) {
         {/* STEP 3 */}
         {step === 3 && (
           <div style={{ maxWidth: '600px', margin: '60px auto', textAlign: 'center' }}>
-            <p style={{ color: '#64748b', marginBottom: '16px', fontSize: '14px' }}>
-              Indexing Material - {progress}%
+            <div style={{ fontSize: '48px', marginBottom: '16px' }}>⏳</div>
+            <h3 style={{ color: '#1e293b', marginBottom: '8px' }}>Processing...</h3>
+            <p style={{ color: '#64748b', fontSize: '14px' }}>
+              Your material is being indexed. This may take a moment.
             </p>
-            <div style={{
-              background: '#e2e8f0', borderRadius: '999px',
-              height: '8px', overflow: 'hidden'
-            }}>
-              <div style={{
-                height: '100%', width: `${progress}%`,
-                background: '#0d9488', borderRadius: '999px',
-                transition: 'width 0.3s'
-              }} />
-            </div>
           </div>
         )}
       </div>
@@ -345,29 +301,53 @@ function UploadWizard({ onClose, onSuccess }) {
 
 // ─── MAIN PAGE ────────────────────────────────────────────────
 function Materials() {
-  const [materials, setMaterials] = useState(fakeData)
+  const [materials, setMaterials] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
   const [search, setSearch] = useState('')
   const [page, setPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(1)
+  const [total, setTotal] = useState(0)
   const [openMenuId, setOpenMenuId] = useState(null)
   const [modal, setModal] = useState(null)
   const [showWizard, setShowWizard] = useState(false)
 
-  const filtered = materials.filter(item =>
-    item.file_name.toLowerCase().includes(search.toLowerCase())
-  )
+  const PAGE_SIZE = 12
 
-  const totalPages = Math.ceil(filtered.length / PAGE_SIZE)
-  const paginated = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
-
-  const confirmAction = () => {
-    if (modal.type === 'suspend') {
-      setMaterials(materials.map(m => m.id === modal.item.id ? { ...m, status: 'Inactive' } : m))
-    } else if (modal.type === 'reactivate') {
-      setMaterials(materials.map(m => m.id === modal.item.id ? { ...m, status: 'Active' } : m))
-    } else if (modal.type === 'delete') {
-      setMaterials(materials.filter(m => m.id !== modal.item.id))
+  const fetchMaterials = async () => {
+    setLoading(true)
+    setError(null)
+    try {
+      const data = await getMaterials({ page, size: PAGE_SIZE, search })
+      setMaterials(data.materials)
+      setTotalPages(data.pages)
+      setTotal(data.total)
+    } catch (err) {
+      setError('Failed to load materials. Make sure the backend is running.')
+    } finally {
+      setLoading(false)
     }
-    setModal(null)
+  }
+
+  useEffect(() => {
+    fetchMaterials()
+  }, [page, search])
+
+  const confirmAction = async () => {
+    try {
+      if (modal.type === 'suspend') {
+        await updateMaterialStatus(modal.item.id, 'inactive')
+      } else if (modal.type === 'reactivate') {
+        await updateMaterialStatus(modal.item.id, 'active')
+      } else if (modal.type === 'delete') {
+        await deleteMaterial(modal.item.id)
+      }
+      setModal(null)
+      fetchMaterials()
+    } catch (err) {
+      alert('Action failed: ' + err.message)
+      setModal(null)
+    }
   }
 
   return (
@@ -375,20 +355,9 @@ function Materials() {
       {showWizard && (
         <UploadWizard
           onClose={() => setShowWizard(false)}
-          onSuccess={(uploadedFiles, annotation) => {
-            const newMaterials = uploadedFiles.map((file, index) => ({
-              id: Date.now() + index,
-              file_name: file.name,
-              type: 'PDF',
-              size: (file.size / 1024).toFixed(0) + 'KB',
-              status: 'Active',
-              uploaded_at: new Date().toLocaleString('en-GB', {
-                day: '2-digit', month: '2-digit', year: 'numeric',
-                hour: '2-digit', minute: '2-digit', hour12: true
-              }).replace(',', ' |')
-            }))
-            setMaterials(prev => [...newMaterials, ...prev])
+          onSuccess={() => {
             setShowWizard(false)
+            fetchMaterials()
           }}
         />
       )}
@@ -494,108 +463,148 @@ function Materials() {
             </div>
           </div>
 
+          {/* Error */}
+          {error && (
+            <div style={{
+              background: '#fee2e2', color: '#ef4444',
+              padding: '12px 16px', borderRadius: '8px',
+              marginBottom: '16px', fontSize: '14px'
+            }}>
+              ❌ {error}
+            </div>
+          )}
+
+          {/* Loading */}
+          {loading && (
+            <div style={{ textAlign: 'center', padding: '40px', color: '#64748b' }}>
+              Loading materials...
+            </div>
+          )}
+
           {/* Table */}
-          <div style={{
-            background: 'white', borderRadius: '12px',
-            border: '1px solid #e2e8f0', overflow: 'hidden'
-          }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-              <thead>
-                <tr style={{ background: '#f8fafc' }}>
-                  <th style={thStyle}>Material Name</th>
-                  <th style={thStyle}>Type</th>
-                  <th style={thStyle}>Size</th>
-                  <th style={thStyle}>Uploaded On</th>
-                  <th style={thStyle}>Status</th>
-                  <th style={thStyle}>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {paginated.map((item) => (
-                  <tr key={item.id} style={{ borderTop: '1px solid #f1f5f9' }}>
-                    <td style={tdStyle}>{item.file_name}</td>
-                    <td style={tdStyle}>{item.type}</td>
-                    <td style={tdStyle}>{item.size}</td>
-                    <td style={tdStyle}>{item.uploaded_at}</td>
-                    <td style={tdStyle}>
-                      <span style={{
-                        background: item.status === 'Active' ? '#d1fae5' : '#fef3c7',
-                        color: item.status === 'Active' ? '#059669' : '#d97706',
-                        padding: '4px 12px', borderRadius: '20px',
-                        fontSize: '12px', fontWeight: '500'
-                      }}>{item.status}</span>
-                    </td>
-                    <td style={tdStyle}>
-                      <div style={{ position: 'relative', display: 'inline-block' }}>
-                        <button
-                          onClick={(e) => { e.stopPropagation(); setOpenMenuId(openMenuId === item.id ? null : item.id) }}
-                          style={{
-                            background: 'none', border: 'none',
-                            cursor: 'pointer', fontSize: '18px', color: '#94a3b8'
-                          }}
-                        >···</button>
-                        {openMenuId === item.id && (
-                          <div onClick={(e) => e.stopPropagation()} style={{
-                            position: 'absolute', right: 0, top: '28px',
-                            background: 'white', borderRadius: '8px',
-                            boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
-                            zIndex: 100, minWidth: '180px', overflow: 'hidden',
-                            border: '1px solid #e2e8f0'
-                          }}>
-                            {item.status === 'Active' ? (
-                              <button
-                                onClick={() => { setModal({ type: 'suspend', item }); setOpenMenuId(null) }}
-                                style={menuItem('#f59e0b')}
-                              >⏸ Suspend Material</button>
-                            ) : (
-                              <button
-                                onClick={() => { setModal({ type: 'reactivate', item }); setOpenMenuId(null) }}
-                                style={menuItem('#0d9488')}
-                              >▶ Activate Material</button>
-                            )}
-                            <button
-                              onClick={() => { setModal({ type: 'delete', item }); setOpenMenuId(null) }}
-                              style={menuItem('#ef4444')}
-                            >🗑 Delete Material</button>
-                          </div>
-                        )}
-                      </div>
-                    </td>
+          {!loading && (
+            <div style={{
+              background: 'white', borderRadius: '12px',
+              border: '1px solid #e2e8f0', overflow: 'hidden'
+            }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                <thead>
+                  <tr style={{ background: '#f8fafc' }}>
+                    <th style={thStyle}>Material Name</th>
+                    <th style={thStyle}>Type</th>
+                    <th style={thStyle}>Size</th>
+                    <th style={thStyle}>Uploaded On</th>
+                    <th style={thStyle}>Status</th>
+                    <th style={thStyle}>Action</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {materials.length === 0 ? (
+                    <tr>
+                      <td colSpan={6} style={{ textAlign: 'center', padding: '40px', color: '#94a3b8' }}>
+                        No materials found.
+                      </td>
+                    </tr>
+                  ) : (
+                    materials.map((item) => (
+                      <tr key={item.id} style={{ borderTop: '1px solid #f1f5f9' }}>
+                        <td style={tdStyle}>{item.file_name}</td>
+                        <td style={tdStyle}>PDF</td>
+                        <td style={tdStyle}>
+                          {item.file_size_bytes
+                            ? (item.file_size_bytes / 1024).toFixed(0) + ' KB'
+                            : '-'}
+                        </td>
+                        <td style={tdStyle}>
+                          {item.created_at
+                            ? new Date(item.created_at).toLocaleString()
+                            : '-'}
+                        </td>
+                        <td style={tdStyle}>
+                          <span style={{
+                            background: item.status === 'active' ? '#d1fae5' : '#fef3c7',
+                            color: item.status === 'active' ? '#059669' : '#d97706',
+                            padding: '4px 12px', borderRadius: '20px',
+                            fontSize: '12px', fontWeight: '500'
+                          }}>
+                            {item.status === 'active' ? 'Active' : 'Inactive'}
+                          </span>
+                        </td>
+                        <td style={tdStyle}>
+                          <div style={{ position: 'relative', display: 'inline-block' }}>
+                            <button
+                              onClick={(e) => { e.stopPropagation(); setOpenMenuId(openMenuId === item.id ? null : item.id) }}
+                              style={{
+                                background: 'none', border: 'none',
+                                cursor: 'pointer', fontSize: '18px', color: '#94a3b8'
+                              }}
+                            >···</button>
+                            {openMenuId === item.id && (
+                              <div onClick={(e) => e.stopPropagation()} style={{
+                                position: 'absolute', right: 0, top: '28px',
+                                background: 'white', borderRadius: '8px',
+                                boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
+                                zIndex: 100, minWidth: '180px', overflow: 'hidden',
+                                border: '1px solid #e2e8f0'
+                              }}>
+                                {item.status === 'active' ? (
+                                  <button
+                                    onClick={() => { setModal({ type: 'suspend', item }); setOpenMenuId(null) }}
+                                    style={menuItem('#f59e0b')}
+                                  >⏸ Suspend Material</button>
+                                ) : (
+                                  <button
+                                    onClick={() => { setModal({ type: 'reactivate', item }); setOpenMenuId(null) }}
+                                    style={menuItem('#0d9488')}
+                                  >▶ Activate Material</button>
+                                )}
+                                <button
+                                  onClick={() => { setModal({ type: 'delete', item }); setOpenMenuId(null) }}
+                                  style={menuItem('#ef4444')}
+                                >🗑 Delete Material</button>
+                              </div>
+                            )}
+                          </div>
+                        </td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
+            </div>
+          )}
 
           {/* Pagination */}
-          <div style={{
-            display: 'flex', justifyContent: 'space-between',
-            alignItems: 'center', marginTop: '16px',
-            fontSize: '13px', color: '#64748b'
-          }}>
-            <span>Showing 1-{paginated.length} of {filtered.length} items</span>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <button
-                onClick={() => setPage(p => Math.max(1, p - 1))}
-                disabled={page === 1}
-                style={pageBtn(page === 1)}
-              >‹</button>
-              {[...Array(totalPages)].map((_, i) => (
-                <button key={i} onClick={() => setPage(i + 1)} style={{
-                  width: '32px', height: '32px', borderRadius: '6px',
-                  border: '1px solid #e2e8f0',
-                  background: page === i + 1 ? '#0d9488' : 'white',
-                  color: page === i + 1 ? 'white' : '#64748b',
-                  cursor: 'pointer', fontSize: '13px'
-                }}>{i + 1}</button>
-              ))}
-              <button
-                onClick={() => setPage(p => Math.min(totalPages, p + 1))}
-                disabled={page === totalPages}
-                style={pageBtn(page === totalPages)}
-              >›</button>
+          {!loading && totalPages > 0 && (
+            <div style={{
+              display: 'flex', justifyContent: 'space-between',
+              alignItems: 'center', marginTop: '16px',
+              fontSize: '13px', color: '#64748b'
+            }}>
+              <span>Showing {materials.length} of {total} items</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <button
+                  onClick={() => setPage(p => Math.max(1, p - 1))}
+                  disabled={page === 1}
+                  style={pageBtn(page === 1)}
+                >‹</button>
+                {[...Array(totalPages)].map((_, i) => (
+                  <button key={i} onClick={() => setPage(i + 1)} style={{
+                    width: '32px', height: '32px', borderRadius: '6px',
+                    border: '1px solid #e2e8f0',
+                    background: page === i + 1 ? '#0d9488' : 'white',
+                    color: page === i + 1 ? 'white' : '#64748b',
+                    cursor: 'pointer', fontSize: '13px'
+                  }}>{i + 1}</button>
+                ))}
+                <button
+                  onClick={() => setPage(p => Math.min(totalPages, p + 1))}
+                  disabled={page === totalPages}
+                  style={pageBtn(page === totalPages)}
+                >›</button>
+              </div>
             </div>
-          </div>
+          )}
 
         </div>
       </div>
