@@ -1,32 +1,23 @@
 import { useState } from 'react'
-import { sendChatQuery } from '../api'
 
 function Chat() {
   const [messages, setMessages] = useState([])
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
 
-  const sendMessage = async () => {
+  const sendMessage = () => {
     if (input.trim() === '') return
     const userMessage = { role: 'user', text: input }
     setMessages(prev => [...prev, userMessage])
     setInput('')
     setLoading(true)
-
-    try {
-      const data = await sendChatQuery(input)
+    setTimeout(() => {
       setMessages(prev => [...prev, {
         role: 'bot',
-        text: data.response
+        text: 'I am Ailwing Bot how may I help you?'
       }])
-    } catch (err) {
-      setMessages(prev => [...prev, {
-        role: 'bot',
-        text: 'Sorry, I could not connect to the AI. Please make sure the backend is running.'
-      }])
-    } finally {
       setLoading(false)
-    }
+    }, 1500)
   }
 
   const handleKeyDown = (e) => {
@@ -129,7 +120,7 @@ function Chat() {
               <div style={{
                 maxWidth: '60%', padding: '10px 14px',
                 borderRadius: msg.role === 'user' ? '12px 12px 4px 12px' : '12px 12px 12px 4px',
-                background: '#f1f5f9',
+                background: msg.role === 'user' ? '#f1f5f9' : '#f1f5f9',
                 color: '#1e293b', fontSize: '14px', lineHeight: '1.5'
               }}>
                 {msg.text}
@@ -177,7 +168,7 @@ function Chat() {
           />
           <button
             onClick={sendMessage}
-            disabled={input.trim() === '' || loading}
+            disabled={input.trim() === ''}
             style={{
               width: '40px', height: '40px',
               borderRadius: '8px', border: 'none',
