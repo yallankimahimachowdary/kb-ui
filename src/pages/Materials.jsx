@@ -175,9 +175,10 @@ function UploadWizard({ onClose, onSuccess }) {
         </div>
       )}
 
+      {/* Wizard Navbar */}
       <div style={{ background: 'white', padding: '0 24px', display: 'flex', alignItems: 'center', borderBottom: '1px solid #e2e8f0', height: '52px', gap: '24px' }}>
-        <span style={{ color: '#94a3b8', fontSize: '14px', fontFamily: 'Inter, sans-serif' }}>AilWingKB</span>
-        <span style={{ color: '#0d9488', fontSize: '14px', fontWeight: '600', borderBottom: '2px solid #0d9488', paddingBottom: '14px', marginBottom: '-1px', fontFamily: 'Inter, sans-serif' }}>AI Materials</span>
+        <span style={{ color: '#1e293b', fontSize: '14px', fontFamily: 'Inter, sans-serif', fontWeight: '600' }}>AilWingKB</span>
+        <span style={{ color: '#0d9488', fontSize: '14px', fontWeight: '400', borderBottom: '2px solid #0d9488', paddingBottom: '14px', marginBottom: '-1px', fontFamily: 'Inter, sans-serif' }}>AI Materials</span>
         <div style={{ flex: 1 }} />
         <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: '#e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="#94a3b8"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
@@ -306,8 +307,8 @@ function Materials() {
 
         {/* Navbar */}
         <div style={{ background: 'white', padding: '0 24px', display: 'flex', alignItems: 'center', borderBottom: '1px solid #e2e8f0', height: '52px', gap: '24px' }}>
-          <span style={{ color: '#94a3b8', fontSize: '14px', fontFamily: 'Inter, sans-serif' }}>AilWingKB</span>
-          <span style={{ color: '#0d9488', fontSize: '14px', fontWeight: '600', borderBottom: '2px solid #0d9488', paddingBottom: '14px', marginBottom: '-1px', fontFamily: 'Inter, sans-serif' }}>AI Materials</span>
+          <span style={{ color: '#1e293b', fontSize: '14px', fontFamily: 'Inter, sans-serif', fontWeight: '600' }}>AilWingKB</span>
+          <span style={{ color: '#0d9488', fontSize: '14px', fontWeight: '400', borderBottom: '2px solid #0d9488', paddingBottom: '14px', marginBottom: '-1px', fontFamily: 'Inter, sans-serif' }}>AI Materials</span>
           <div style={{ flex: 1 }} />
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
@@ -315,20 +316,23 @@ function Materials() {
           <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: '#e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'center', marginLeft: '8px' }}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="#94a3b8"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
           </div>
-          <button onClick={() => setShowWizard(true)} style={{ background: '#0d9488', color: 'white', border: 'none', padding: '8px 16px', borderRadius: '8px', cursor: 'pointer', fontSize: '13px', fontFamily: 'Inter, sans-serif', fontWeight: '500', marginLeft: '8px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+        </div>
+
+        {/* Breadcrumb + Upload */}
+        <div style={{ padding: '10px 24px', fontSize: '12px', color: '#94a3b8', fontFamily: 'Inter, sans-serif', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid #f1f5f9', background: 'white' }}>
+          <span>
+            Home <span style={{ margin: '0 4px' }}>›</span>
+            <span style={{ color: '#1e293b', fontWeight: '500' }}>AI Materials</span>
+          </span>
+          <button onClick={() => setShowWizard(true)} style={{ background: '#0d9488', color: 'white', border: 'none', padding: '8px 16px', borderRadius: '8px', cursor: 'pointer', fontSize: '13px', fontFamily: 'Inter, sans-serif', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '6px' }}>
             + Upload
           </button>
         </div>
 
-        {/* Breadcrumb */}
-        <div style={{ padding: '10px 24px', fontSize: '12px', color: '#94a3b8', fontFamily: 'Inter, sans-serif' }}>
-          Home <span style={{ margin: '0 4px' }}>›</span>
-          <span style={{ color: '#1e293b', fontWeight: '500' }}>AI Materials</span>
-        </div>
-
         {/* Content */}
-        <div style={{ padding: '0 24px 24px' }}>
+        <div style={{ padding: '16px 24px 24px' }}>
 
+          {/* Search bar + filter */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
             <h2 style={{ color: '#1e293b', fontSize: '16px', fontWeight: '600', fontFamily: 'Inter, sans-serif', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1e293b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -355,7 +359,7 @@ function Materials() {
           <div style={{ background: 'white', borderRadius: '12px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse' }}>
               <thead>
-                <tr style={{ background: '#f0fdf9' }}>
+                <tr style={{ background: '#f8fafc' }}>
                   <th style={thStyle}>Material Name</th>
                   <th style={thStyle}>Type</th>
                   <th style={thStyle}>Size</th>
@@ -438,8 +442,8 @@ function Materials() {
 
 const thStyle = {
   padding: '11px 16px', textAlign: 'left',
-  color: '#0d9488', fontWeight: '500', fontSize: '13px',
-  fontFamily: 'Inter, sans-serif', background: '#f0fdf9'
+  color: '#94a3b8', fontWeight: '400', fontSize: '12px',
+  fontFamily: 'Inter, sans-serif', background: '#f8fafc'
 }
 const tdStyle = {
   padding: '13px 16px', color: '#1e293b', fontSize: '13px',
