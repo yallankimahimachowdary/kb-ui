@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import { sendChatMessage } from '../api'
 
 function Chat() {
   const [messages, setMessages] = useState([])
@@ -10,19 +11,25 @@ function Chat() {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages, loading])
 
-  const sendMessage = () => {
+  const sendMessage = async () => {
     if (input.trim() === '') return
     const userMessage = { role: 'user', text: input }
     setMessages(prev => [...prev, userMessage])
     setInput('')
     setLoading(true)
-    setTimeout(() => {
+    try {
+      const data = await sendChatMessage(input)
       setMessages(prev => [...prev, {
         role: 'bot',
-        text: 'I am Ailwing Bot how may I help you?'
+        text: data.response || 'Sorry, I could not get a response.'
       }])
-      setLoading(false)
-    }, 1500)
+    } catch (err) {
+      setMessages(prev => [...prev, {
+        role: 'bot',
+        text: 'Something went wrong. Please try again.'
+      }])
+    }
+    setLoading(false)
   }
 
   const handleKeyDown = (e) => {
@@ -83,10 +90,7 @@ function Chat() {
       </div>
 
       {/* Chat area */}
-      <div style={{
-        flex: 1, display: 'flex', flexDirection: 'column',
-        position: 'relative', overflow: 'hidden'
-      }}>
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden' }}>
 
         {/* Messages */}
         <div style={{
@@ -103,10 +107,9 @@ function Chat() {
               textAlign: 'center', paddingTop: '120px'
             }}>
               <div style={{
-              width: '72px', height: '72px', borderRadius: '50%',
-              background: 'radial-gradient(circle at 30% 25%, #6ee7b7 0%, #10b981 45%, #047857 100%)',
-              marginBottom: '20px',
-              flexShrink: 0
+                width: '72px', height: '72px', borderRadius: '50%',
+                background: 'radial-gradient(circle at 30% 25%, #6ee7b7 0%, #10b981 45%, #047857 100%)',
+                marginBottom: '20px', flexShrink: 0
               }} />
               <h2 style={{
                 color: '#1e293b', fontSize: '22px', fontWeight: '600',
@@ -152,10 +155,7 @@ function Chat() {
 
           {/* Loading */}
           {loading && (
-            <div style={{
-              color: '#94a3b8', fontSize: '14px',
-              fontFamily: 'Inter, sans-serif'
-            }}>
+            <div style={{ color: '#94a3b8', fontSize: '14px', fontFamily: 'Inter, sans-serif' }}>
               Thinking...
             </div>
           )}
@@ -163,15 +163,11 @@ function Chat() {
           <div ref={messagesEndRef} />
         </div>
 
-        {/* Input area — centered */}
-        <div style={{
-          padding: '16px 80px 32px',
-        }}>
+        {/* Input area */}
+        <div style={{ padding: '16px 80px 32px' }}>
           <div style={{
-            background: 'white',
-            border: '1px solid #e2e8f0',
-            borderRadius: '16px',
-            padding: '16px 16px 12px',
+            background: 'white', border: '1px solid #e2e8f0',
+            borderRadius: '16px', padding: '16px 16px 12px',
             display: 'flex', flexDirection: 'column', gap: '12px',
             boxShadow: '0 2px 8px rgba(0,0,0,0.06)'
           }}>
@@ -185,20 +181,19 @@ function Chat() {
                 border: 'none', outline: 'none',
                 background: 'transparent',
                 color: '#1e293b', fontSize: '14px',
-                fontFamily: 'Inter, sans-serif',
-                width: '100%'
+                fontFamily: 'Inter, sans-serif', width: '100%'
               }}
             />
             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
               <button
                 onClick={sendMessage}
-                disabled={input.trim() === ''}
+                disabled={input.trim() === '' || loading}
                 style={{
                   width: '36px', height: '36px',
                   borderRadius: '10px', border: 'none',
-                  background: input.trim() === '' ? '#e2e8f0' : '#0d9488',
+                  background: input.trim() === '' || loading ? '#e2e8f0' : '#0d9488',
                   color: 'white',
-                  cursor: input.trim() === '' ? 'not-allowed' : 'pointer',
+                  cursor: input.trim() === '' || loading ? 'not-allowed' : 'pointer',
                   display: 'flex', alignItems: 'center', justifyContent: 'center'
                 }}
               >
