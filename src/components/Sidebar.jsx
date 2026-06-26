@@ -15,7 +15,7 @@ function Sidebar() {
       }}>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
 
-          {/* Hamburger - three rounded lines */}
+          {/* Hamburger */}
           <div onClick={() => setExpanded(true)} style={{ width: '56px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', marginBottom: '8px' }}>
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0d9488" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="3" y1="6" x2="21" y2="6"/>
@@ -24,7 +24,7 @@ function Sidebar() {
             </svg>
           </div>
 
-          {/* AI Materials - folder with cloud badge */}
+          {/* AI Materials - folder with cloud badge bottom-right */}
           <NavLink to="/materials" title="AI Materials"
             style={({ isActive }) => ({
               width: '56px', height: '56px',
@@ -34,16 +34,17 @@ function Sidebar() {
             })}
           >
             {({ isActive }) => (
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={isActive ? '#ffffff' : '#94a3b8'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                {/* Folder body */}
-                <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/>
-                {/* Cloud badge */}
-                <path d="M14 17h2.5a1.5 1.5 0 0 0 0-3 1.5 1.5 0 0 0-2.85-.5A1.5 1.5 0 0 0 14 17z"/>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={isActive ? '#ffffff' : '#94a3b8'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                {/* Folder shape */}
+                <path d="M2 7a2 2 0 0 1 2-2h4.17a2 2 0 0 1 1.42.59l1.41 1.41H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7z"/>
+                {/* Cloud badge bottom-right */}
+                <path d="M15.5 18.5a2 2 0 0 1-1.5-3.32A2 2 0 0 1 17 16a1 1 0 0 1 1 1v.5a1 1 0 0 1-1 1h-1.5z"/>
+                <circle cx="18.5" cy="18" r="1" stroke="none" fill={isActive ? '#ffffff' : '#94a3b8'}/>
               </svg>
             )}
           </NavLink>
 
-          {/* Chat - speech bubble with dots and magnifier */}
+          {/* Chat - speech bubble with dots and magnifier bottom-right */}
           <NavLink to="/chat" title="Chat With AI"
             style={({ isActive }) => ({
               width: '56px', height: '56px',
@@ -53,16 +54,16 @@ function Sidebar() {
             })}
           >
             {({ isActive }) => (
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={isActive ? '#ffffff' : '#94a3b8'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                {/* Speech bubble */}
-                <path d="M21 12c0 4.418-4.03 8-9 8a9.86 9.86 0 0 1-4-.8L3 20l1.2-4A7.93 7.93 0 0 1 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-                {/* Three dots */}
-                <circle cx="8" cy="11" r="0.8" fill={isActive ? '#ffffff' : '#94a3b8'}/>
-                <circle cx="12" cy="11" r="0.8" fill={isActive ? '#ffffff' : '#94a3b8'}/>
-                <circle cx="16" cy="11" r="0.8" fill={isActive ? '#ffffff' : '#94a3b8'}/>
-                {/* Magnifier */}
-                <circle cx="15" cy="16" r="1.8"/>
-                <line x1="16.3" y1="17.3" x2="18" y2="19"/>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={isActive ? '#ffffff' : '#94a3b8'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                {/* Rounded speech bubble */}
+                <path d="M4 4h11a3 3 0 0 1 3 3v5a3 3 0 0 1-3 3H9l-5 3V7a3 3 0 0 1 0 0V4z"/>
+                {/* Three dots inside bubble */}
+                <circle cx="7" cy="10" r="0.8" fill={isActive ? '#ffffff' : '#94a3b8'} stroke="none"/>
+                <circle cx="10" cy="10" r="0.8" fill={isActive ? '#ffffff' : '#94a3b8'} stroke="none"/>
+                <circle cx="13" cy="10" r="0.8" fill={isActive ? '#ffffff' : '#94a3b8'} stroke="none"/>
+                {/* Magnifier badge bottom-right */}
+                <circle cx="17" cy="17" r="2.5"/>
+                <line x1="19" y1="19" x2="21" y2="21"/>
               </svg>
             )}
           </NavLink>
@@ -118,8 +119,8 @@ function Sidebar() {
                 {({ isActive }) => (
                   <>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={isActive ? '#ffffff' : '#94a3b8'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/>
-                      <path d="M14 17h2.5a1.5 1.5 0 0 0 0-3 1.5 1.5 0 0 0-2.85-.5A1.5 1.5 0 0 0 14 17z"/>
+                      <path d="M2 7a2 2 0 0 1 2-2h4.17a2 2 0 0 1 1.42.59l1.41 1.41H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7z"/>
+                      <path d="M15.5 18.5a2 2 0 0 1-1.5-3.32A2 2 0 0 1 17 16a1 1 0 0 1 1 1v.5a1 1 0 0 1-1 1h-1.5z"/>
                     </svg>
                     <span style={{ color: isActive ? 'white' : '#94a3b8', fontSize: '14px', fontFamily: 'Inter, sans-serif' }}>AI Materials</span>
                   </>
@@ -137,12 +138,12 @@ function Sidebar() {
                 {({ isActive }) => (
                   <>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={isActive ? '#ffffff' : '#94a3b8'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M21 12c0 4.418-4.03 8-9 8a9.86 9.86 0 0 1-4-.8L3 20l1.2-4A7.93 7.93 0 0 1 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-                      <circle cx="8" cy="11" r="0.8" fill={isActive ? '#ffffff' : '#94a3b8'}/>
-                      <circle cx="12" cy="11" r="0.8" fill={isActive ? '#ffffff' : '#94a3b8'}/>
-                      <circle cx="16" cy="11" r="0.8" fill={isActive ? '#ffffff' : '#94a3b8'}/>
-                      <circle cx="15" cy="16" r="1.8"/>
-                      <line x1="16.3" y1="17.3" x2="18" y2="19"/>
+                      <path d="M4 4h11a3 3 0 0 1 3 3v5a3 3 0 0 1-3 3H9l-5 3V7a3 3 0 0 1 0 0V4z"/>
+                      <circle cx="7" cy="10" r="0.8" fill={isActive ? '#ffffff' : '#94a3b8'} stroke="none"/>
+                      <circle cx="10" cy="10" r="0.8" fill={isActive ? '#ffffff' : '#94a3b8'} stroke="none"/>
+                      <circle cx="13" cy="10" r="0.8" fill={isActive ? '#ffffff' : '#94a3b8'} stroke="none"/>
+                      <circle cx="17" cy="17" r="2.5"/>
+                      <line x1="19" y1="19" x2="21" y2="21"/>
                     </svg>
                     <span style={{ color: isActive ? 'white' : '#94a3b8', fontSize: '14px', fontFamily: 'Inter, sans-serif' }}>Chat With AI</span>
                   </>
