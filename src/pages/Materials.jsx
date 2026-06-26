@@ -422,7 +422,7 @@ function Materials() {
                       </td>
                       <td style={tdStyle}>
                         <div style={{ position: 'relative', display: 'inline-block' }}>
-                          <button onClick={(e) => { e.stopPropagation(); setOpenMenuId(openMenuId === item.id ? null : item.id) }} style={{ background: '#f1f5f9', border: 'none', cursor: 'pointer', color: '#64748b', fontSize: '14px', letterSpacing: '2px', padding: '4px 10px', borderRadius: '6px' }}>···</button>
+                          <button onClick={(e) => { e.stopPropagation(); setOpenMenuId(openMenuId === item.id ? null : item.id) }} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#94a3b8', fontSize: '18px', letterSpacing: '1px', padding: '4px 8px' }}>···</button>
                           {openMenuId === item.id && (
                             <div onClick={(e) => e.stopPropagation()} style={{ position: 'absolute', right: 0, top: '32px', background: 'white', borderRadius: '10px', boxShadow: '0 4px 24px rgba(0,0,0,0.12)', zIndex: 100, minWidth: '180px', overflow: 'hidden', border: '1px solid #f1f5f9' }}>
                               {item.status === 'active' ? (
