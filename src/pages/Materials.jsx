@@ -364,16 +364,30 @@ function Materials() {
         <div style={{ padding: '16px 24px 24px' }}>
 
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-            <h2 style={{ color: '#1e293b', fontSize: '16px', fontWeight: '600', fontFamily: 'Inter, sans-serif', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1e293b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              {/* Folder */}
-              <path d="M2 7a2 2 0 0 1 2-2h4.17a2 2 0 0 1 1.42.59l1.41 1.41H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7z"/>
-              {/* Cloud badge */}
-              <path d="M13 17a3 3 0 1 1 6 0"/>
-              <path d="M11 17a5 5 0 0 1 10 0"/>
-              </svg>
-              AI Materials
-            </h2>
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 27 27"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+         >
+         <path
+            d="M10.125 24.75H7.875C3.375 24.75 2.25 23.625 2.25 19.125V7.875C2.25 3.375 3.375 2.25 7.875 2.25H9.5625C11.25 2.25 11.6213 2.74501 12.2625 3.60001L13.95 5.85001C14.3775 6.41251 14.625 6.75 15.75 6.75H19.125C23.625 6.75 24.75 7.875 24.75 12.375V14.625"
+            stroke="#1e293b"
+            strokeWidth="1.5"
+            strokeMiterlimit="10"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M15.48 20.6101C12.8363 20.8013 12.8363 24.6263 15.48 24.8176H21.735C22.4888 24.8176 23.2313 24.5363 23.7825 24.03C25.6388 22.41 24.6487 19.17 22.2075 18.8663C21.33 13.59 13.7025 15.5925 15.5025 20.6213"
+            stroke="#1e293b"
+            strokeWidth="1.5"
+            strokeMiterlimit="10"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          </svg>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'white', border: '1px solid #e2e8f0', borderRadius: '8px', padding: '7px 12px' }}>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
