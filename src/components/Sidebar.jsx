@@ -168,10 +168,16 @@ function Sidebar() {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px', marginBottom: '24px' }}>
               <span style={{ color: 'white', fontSize: '15px', fontWeight: '600', fontFamily: 'Inter, sans-serif' }}>AilWingBot</span>
               <div onClick={() => setExpanded(false)} style={{ cursor: 'pointer' }}>
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0d9488" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="3" y1="6" x2="21" y2="6"/>
-                  <line x1="3" y1="12" x2="15" y2="12"/>
-                  <line x1="3" y1="18" x2="21" y2="18"/>
+                <svg
+                  width="24"
+                  height="17"
+                  viewBox="0 0 32 22"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect x="15" width="17" height="2" rx="1" fill="#036A55" />
+                  <rect y="10" width="32" height="2" rx="1" fill="#0AA182" />
+                  <rect x="7" y="20" width="25" height="2" rx="1" fill="#D9D9D9" />
                 </svg>
               </div>
             </div>
