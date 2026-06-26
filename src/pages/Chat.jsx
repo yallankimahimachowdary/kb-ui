@@ -116,12 +116,12 @@ function Chat() {
                 marginBottom: '16px', flexShrink: 0
               }} />
               <h2 style={{
-                color: '#1e293b', fontSize: '22px', fontWeight: '400',
+                color: '#1e293b', fontSize: '22px', fontWeight: '600',
                 marginBottom: '8px', fontFamily: 'Inter, sans-serif'
               }}>
                 Welcome to AwBot
               </h2>
-              <p style={{ color: '#64748b', fontSize: '14px', fontFamily: 'Inter, sans-serif' }}>
+              <p style={{ color: '#475569', fontSize: '14px', fontFamily: 'Inter, sans-serif' }}>
                 Start by scripting a task, and let the chat take over.
               </p>
             </div>
