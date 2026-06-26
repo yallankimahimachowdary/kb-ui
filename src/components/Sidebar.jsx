@@ -13,7 +13,7 @@ function Sidebar() {
         paddingTop: '16px', paddingBottom: '20px', justifyContent: 'space-between',
         position: 'fixed', left: 0, top: 0, zIndex: 100
       }}>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', width: '100%' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'stretch', gap: '4px', width: '100%' }}>
 
           {/* Hamburger */}
           <div onClick={() => setExpanded(true)} style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', marginBottom: '12px' }}>
