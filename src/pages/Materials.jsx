@@ -367,7 +367,7 @@ function Materials() {
             style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '10px',
+            justifyContent: 'space-between',
             marginBottom: '24px',
             }}
           >
