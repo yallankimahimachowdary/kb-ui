@@ -107,9 +107,9 @@ function Chat() {
               textAlign: 'center', paddingTop: '120px'
             }}>
               <div style={{
-                width: '72px', height: '72px', borderRadius: '50%',
-                background: 'radial-gradient(circle at 30% 25%, #6ee7b7 0%, #10b981 45%, #047857 100%)',
-                marginBottom: '20px', flexShrink: 0
+              width: '56px', height: '56px', borderRadius: '50%',
+              background: 'radial-gradient(circle at 30% 30%, #4ade80 0%, #16a34a 40%, #064e3b 100%)',
+              marginBottom: '16px', flexShrink: 0
               }} />
               <h2 style={{
                 color: '#1e293b', fontSize: '22px', fontWeight: '600',
