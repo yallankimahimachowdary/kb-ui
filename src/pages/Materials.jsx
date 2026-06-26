@@ -397,7 +397,7 @@ function Materials() {
 
             <span
               style={{
-                fontSize: '30px',
+                fontSize: '20px',
                 fontWeight: 600,
                 color: '#1e293b',
                 fontFamily: 'Inter, sans-serif',
