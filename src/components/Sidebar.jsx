@@ -77,17 +77,40 @@ function Sidebar() {
             })}
           >
             {({ isActive }) => (
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={isActive ? '#ffffff' : '#94a3b8'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                {/* Rounded speech bubble */}
-                <path d="M4 4h11a3 3 0 0 1 3 3v5a3 3 0 0 1-3 3H9l-5 3V7a3 3 0 0 1 0 0V4z"/>
-                {/* Three dots inside bubble */}
-                <circle cx="7" cy="10" r="0.8" fill={isActive ? '#ffffff' : '#94a3b8'} stroke="none"/>
-                <circle cx="10" cy="10" r="0.8" fill={isActive ? '#ffffff' : '#94a3b8'} stroke="none"/>
-                <circle cx="13" cy="10" r="0.8" fill={isActive ? '#ffffff' : '#94a3b8'} stroke="none"/>
-                {/* Magnifier badge bottom-right */}
-                <circle cx="17" cy="17" r="2.5"/>
-                <line x1="19" y1="19" x2="21" y2="21"/>
-              </svg>
+              <svg
+                width="24"
+                height="24"
+                viewBox="30 17 20 22"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+              <path
+                d="M41.2 37.37C40.54 38.25 39.46 38.25 38.8 37.37L37.3 35.37C37.13 35.15 36.77 34.97 36.5 34.97H36C32 34.97 30 33.97 30 28.97V23.97C30 19.97 32 17.97 36 17.97H44C48 17.97 50 19.97 50 23.97V28.97"
+                stroke={isActive ? "#fff" : "#94a3b8"}
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+
+              <path
+                d="M46.2 37.4C47.9673 37.4 49.4 35.9673 49.4 34.2C49.4 32.4327 47.9673 31 46.2 31C44.4327 31 43 32.4327 43 34.2C43 35.9673 44.4327 37.4 46.2 37.4Z"
+                stroke={isActive ? "#fff" : "#94a3b8"}
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+
+              <path
+                d="M50 38L49 37"
+                stroke={isActive ? "#fff" : "#94a3b8"}
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
+
+  <circle cx="36" cy="27" r="1" fill={isActive ? "#fff" : "#94a3b8"} />
+  <circle cx="40" cy="27" r="1" fill={isActive ? "#fff" : "#94a3b8"} />
+  <circle cx="44" cy="27" r="1" fill={isActive ? "#fff" : "#94a3b8"} />
+</svg>
             )}
           </NavLink>
 
@@ -160,13 +183,39 @@ function Sidebar() {
               >
                 {({ isActive }) => (
                   <>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={isActive ? '#ffffff' : '#94a3b8'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M4 4h11a3 3 0 0 1 3 3v5a3 3 0 0 1-3 3H9l-5 3V7a3 3 0 0 1 0 0V4z"/>
-                      <circle cx="7" cy="10" r="0.8" fill={isActive ? '#ffffff' : '#94a3b8'} stroke="none"/>
-                      <circle cx="10" cy="10" r="0.8" fill={isActive ? '#ffffff' : '#94a3b8'} stroke="none"/>
-                      <circle cx="13" cy="10" r="0.8" fill={isActive ? '#ffffff' : '#94a3b8'} stroke="none"/>
-                      <circle cx="17" cy="17" r="2.5"/>
-                      <line x1="19" y1="19" x2="21" y2="21"/>
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="30 17 20 22"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                    <path
+                      d="M41.2 37.37C40.54 38.25 39.46 38.25 38.8 37.37L37.3 35.37C37.13 35.15 36.77 34.97 36.5 34.97H36C32 34.97 30 33.97 30 28.97V23.97C30 19.97 32 17.97 36 17.97H44C48 17.97 50 19.97 50 23.97V28.97"
+                      stroke={isActive ? "#fff" : "#94a3b8"}
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+
+                    <path
+                      d="M46.2 37.4C47.9673 37.4 49.4 35.9673 49.4 34.2C49.4 32.4327 47.9673 31 46.2 31C44.4327 31 43 32.4327 43 34.2C43 35.9673 44.4327 37.4 46.2 37.4Z"
+                      stroke={isActive ? "#fff" : "#94a3b8"}
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+
+                    <path
+                      d="M50 38L49 37"
+                      stroke={isActive ? "#fff" : "#94a3b8"}
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                    />
+
+                    <circle cx="36" cy="27" r="1" fill={isActive ? "#fff" : "#94a3b8"} />
+                    <circle cx="40" cy="27" r="1" fill={isActive ? "#fff" : "#94a3b8"} />
+                    <circle cx="44" cy="27" r="1" fill={isActive ? "#fff" : "#94a3b8"} />
                     </svg>
                     <span style={{ color: isActive ? 'white' : '#94a3b8', fontSize: '14px', fontFamily: 'Inter, sans-serif' }}>Chat With AI</span>
                   </>
