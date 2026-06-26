@@ -8,7 +8,7 @@ function Sidebar() {
     <>
       {/* Collapsed sidebar */}
       <div style={{
-        width: '56px', height: '100vh', background: '#1e2433',
+        width: '56px', height: '100vh', background: '#0f1117',
         display: 'flex', flexDirection: 'column', alignItems: 'center',
         paddingTop: '16px', paddingBottom: '20px', justifyContent: 'space-between',
         position: 'fixed', left: 0, top: 0, zIndex: 100
@@ -81,7 +81,7 @@ function Sidebar() {
           <div style={{
             position: 'fixed', left: '56px', top: 0,
             width: '220px', height: '100vh',
-            background: '#1e2433', zIndex: 99,
+            background: '#0f1117', zIndex: 99,
             display: 'flex', flexDirection: 'column',
             paddingTop: '16px', paddingBottom: '20px',
           }}>
