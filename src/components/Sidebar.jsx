@@ -15,16 +15,16 @@ function Sidebar() {
       }}>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
 
-          {/* Hamburger - three lines different lengths */}
+          {/* Hamburger - three rounded lines */}
           <div onClick={() => setExpanded(true)} style={{ width: '56px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', marginBottom: '8px' }}>
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0d9488" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="3" y1="6" x2="21" y2="6"/>
-              <line x1="3" y1="12" x2="16" y2="12"/>
+              <line x1="3" y1="12" x2="15" y2="12"/>
               <line x1="3" y1="18" x2="21" y2="18"/>
             </svg>
           </div>
 
-          {/* AI Materials - folder with cloud */}
+          {/* AI Materials - folder with cloud badge */}
           <NavLink to="/materials" title="AI Materials"
             style={({ isActive }) => ({
               width: '56px', height: '56px',
@@ -35,10 +35,10 @@ function Sidebar() {
           >
             {({ isActive }) => (
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={isActive ? '#ffffff' : '#94a3b8'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
-                <path d="M12 17v-4"/>
-                <path d="M10 13.5a2.5 2.5 0 0 1 4 0"/>
-                <circle cx="12" cy="11" r="1.5"/>
+                {/* Folder body */}
+                <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/>
+                {/* Cloud badge */}
+                <path d="M14 17h2.5a1.5 1.5 0 0 0 0-3 1.5 1.5 0 0 0-2.85-.5A1.5 1.5 0 0 0 14 17z"/>
               </svg>
             )}
           </NavLink>
@@ -54,12 +54,15 @@ function Sidebar() {
           >
             {({ isActive }) => (
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={isActive ? '#ffffff' : '#94a3b8'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                <circle cx="9" cy="10" r="1"/>
-                <circle cx="12" cy="10" r="1"/>
-                <circle cx="15" cy="10" r="1"/>
-                <circle cx="15" cy="15" r="2"/>
-                <line x1="16.5" y1="16.5" x2="19" y2="19"/>
+                {/* Speech bubble */}
+                <path d="M21 12c0 4.418-4.03 8-9 8a9.86 9.86 0 0 1-4-.8L3 20l1.2-4A7.93 7.93 0 0 1 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                {/* Three dots */}
+                <circle cx="8" cy="11" r="0.8" fill={isActive ? '#ffffff' : '#94a3b8'}/>
+                <circle cx="12" cy="11" r="0.8" fill={isActive ? '#ffffff' : '#94a3b8'}/>
+                <circle cx="16" cy="11" r="0.8" fill={isActive ? '#ffffff' : '#94a3b8'}/>
+                {/* Magnifier */}
+                <circle cx="15" cy="16" r="1.8"/>
+                <line x1="16.3" y1="17.3" x2="18" y2="19"/>
               </svg>
             )}
           </NavLink>
@@ -96,7 +99,7 @@ function Sidebar() {
               <div onClick={() => setExpanded(false)} style={{ cursor: 'pointer' }}>
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0d9488" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="3" y1="6" x2="21" y2="6"/>
-                  <line x1="3" y1="12" x2="16" y2="12"/>
+                  <line x1="3" y1="12" x2="15" y2="12"/>
                   <line x1="3" y1="18" x2="21" y2="18"/>
                 </svg>
               </div>
@@ -115,9 +118,8 @@ function Sidebar() {
                 {({ isActive }) => (
                   <>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={isActive ? '#ffffff' : '#94a3b8'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
-                      <circle cx="12" cy="13" r="2"/>
-                      <path d="M12 11v-1"/>
+                      <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/>
+                      <path d="M14 17h2.5a1.5 1.5 0 0 0 0-3 1.5 1.5 0 0 0-2.85-.5A1.5 1.5 0 0 0 14 17z"/>
                     </svg>
                     <span style={{ color: isActive ? 'white' : '#94a3b8', fontSize: '14px', fontFamily: 'Inter, sans-serif' }}>AI Materials</span>
                   </>
@@ -135,12 +137,12 @@ function Sidebar() {
                 {({ isActive }) => (
                   <>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={isActive ? '#ffffff' : '#94a3b8'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                      <circle cx="9" cy="10" r="1"/>
-                      <circle cx="12" cy="10" r="1"/>
-                      <circle cx="15" cy="10" r="1"/>
-                      <circle cx="15" cy="15" r="2"/>
-                      <line x1="16.5" y1="16.5" x2="19" y2="19"/>
+                      <path d="M21 12c0 4.418-4.03 8-9 8a9.86 9.86 0 0 1-4-.8L3 20l1.2-4A7.93 7.93 0 0 1 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                      <circle cx="8" cy="11" r="0.8" fill={isActive ? '#ffffff' : '#94a3b8'}/>
+                      <circle cx="12" cy="11" r="0.8" fill={isActive ? '#ffffff' : '#94a3b8'}/>
+                      <circle cx="16" cy="11" r="0.8" fill={isActive ? '#ffffff' : '#94a3b8'}/>
+                      <circle cx="15" cy="16" r="1.8"/>
+                      <line x1="16.3" y1="17.3" x2="18" y2="19"/>
                     </svg>
                     <span style={{ color: isActive ? 'white' : '#94a3b8', fontSize: '14px', fontFamily: 'Inter, sans-serif' }}>Chat With AI</span>
                   </>
