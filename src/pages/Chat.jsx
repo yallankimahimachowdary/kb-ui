@@ -121,7 +121,7 @@ function Chat() {
               }}>
                 Welcome to AwBot
               </h2>
-              <p style={{ color: '#334155', fontSize: '14px', fontFamily: 'Inter, sans-serif' }}>
+              <p style={{ color: '#0f172a', fontSize: '14px', fontFamily: 'Inter, sans-serif' }}>
                 Start by scripting a task, and let the chat take over.
               </p>
             </div>
