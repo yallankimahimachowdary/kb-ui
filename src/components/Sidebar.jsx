@@ -188,9 +188,28 @@ function Sidebar() {
               >
                 {({ isActive }) => (
                   <>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={isActive ? '#ffffff' : '#94a3b8'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M2 7a2 2 0 0 1 2-2h4.17a2 2 0 0 1 1.42.59l1.41 1.41H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7z"/>
-                      <path d="M15.5 18.5a2 2 0 0 1-1.5-3.32A2 2 0 0 1 17 16a1 1 0 0 1 1 1v.5a1 1 0 0 1-1 1h-1.5z"/>
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="30 18 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                    <path
+                      d="M37 38H35C31 38 30 37 30 33V23C30 19 31 18 35 18H36.5C38 18 38.33 18.44 38.9 19.2L40.4 21.2C40.78 21.7 41 22 42 22H45C49 22 50 23 50 27V29"
+                      stroke={isActive ? "#ffffff" : "#94a3b8"}
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+
+                    <path
+                      d="M41.7601 34.32C39.4101 34.49 39.4101 37.89 41.7601 38.06H47.3201C47.9901 38.06 48.6501 37.81 49.1401 37.36C50.7901 35.92 49.91 33.04 47.74 32.77C46.96 28.08 40.1801 29.86 41.7801 34.33"
+                      stroke={isActive ? "#ffffff" : "#94a3b8"}
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
                     </svg>
                     <span style={{ color: isActive ? 'white' : '#94a3b8', fontSize: '14px', fontFamily: 'Inter, sans-serif' }}>AI Materials</span>
                   </>
