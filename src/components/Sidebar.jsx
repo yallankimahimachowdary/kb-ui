@@ -9,14 +9,14 @@ function Sidebar() {
       {/* Collapsed sidebar */}
       <div style={{
         width: '56px', height: '100vh', background: '#0f1117',
-        display: 'flex', flexDirection: 'column', alignItems: 'center',
+        display: 'flex', flexDirection: 'column',
         paddingTop: '16px', paddingBottom: '20px', justifyContent: 'space-between',
         position: 'fixed', left: 0, top: 0, zIndex: 100
       }}>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'stretch', gap: '4px', width: '100%' }}>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
 
           {/* Hamburger */}
-          <div onClick={() => setExpanded(true)} style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', marginBottom: '12px' }}>
+          <div onClick={() => setExpanded(true)} style={{ width: '56px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', marginBottom: '8px' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
               <div style={{ width: '18px', height: '2px', background: '#0d9488', borderRadius: '2px' }} />
               <div style={{ width: '18px', height: '2px', background: '#0d9488', borderRadius: '2px' }} />
@@ -27,7 +27,7 @@ function Sidebar() {
           {/* AI Materials */}
           <NavLink to="/materials" title="AI Materials"
             style={({ isActive }) => ({
-              width: '100%', height: '48px',
+              width: '56px', height: '56px',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               textDecoration: 'none',
               background: isActive ? '#0d9488' : 'transparent',
@@ -45,7 +45,7 @@ function Sidebar() {
           {/* Chat With AI */}
           <NavLink to="/chat" title="Chat With AI"
             style={({ isActive }) => ({
-              width: '100%', height: '48px',
+              width: '56px', height: '56px',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               textDecoration: 'none',
               background: isActive ? '#0d9488' : 'transparent',
@@ -63,7 +63,7 @@ function Sidebar() {
         </div>
 
         {/* Logout */}
-        <div style={{ width: '40px', height: '40px', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
+        <div style={{ width: '56px', height: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
             <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
             <polyline points="16 17 21 12 16 7"/>
