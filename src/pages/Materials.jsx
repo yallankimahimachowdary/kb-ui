@@ -196,7 +196,7 @@ function UploadWizard({ onClose, onSuccess }) {
       {/* Wizard Navbar */}
       {/* Navbar */}
       <div style={{ background: 'white', padding: '0 24px', display: 'flex', alignItems: 'center', borderBottom: '1px solid #e2e8f0', height: '52px', gap: '16px' }}>
-      <span style={{ color: '#1e293b', fontSize: '14px', fontFamily: 'Inter, sans-serif', fontWeight: '600' }}>AilWingKB</span>
+      <span style={{ color: '#1e293b', fontSize: '14px', fontFamily: 'Inter, sans-serif',fontWeight: '600' }}>AilWingKB</span><div style={{ width: '1px', height: '20px', background: '#e2e8f0' }} />
       <div style={{ width: '1px', height: '20px', background: '#e2e8f0' }} />
       <span style={{ color: '#1e293b', fontSize: '14px', fontWeight: '500', borderBottom: '2px solid #0d9488', paddingBottom: '14px', marginBottom: '-1px', fontFamily: 'Inter, sans-serif' }}>AI Materials</span>
         <div style={{ flex: 1 }} />
@@ -341,7 +341,7 @@ function Materials() {
 
         {/* Navbar */}
         <div style={{ background: 'white', padding: '0 24px', display: 'flex', alignItems: 'center', borderBottom: '1px solid #e2e8f0', height: '52px', gap: '24px' }}>
-          <span style={{ color: '#1e293b', fontSize: '14px', fontFamily: 'Inter, sans-serif', fontWeight: '600' }}>AilWingKB</span>
+          <span style={{ color: '#1e293b', fontSize: '14px', fontFamily: 'Inter, sans-serif',fontWeight: '600' }}>AilWingKB</span><div style={{ width: '1px', height: '20px', background: '#e2e8f0' }} />
           <span style={{ color: '#1e293b', fontSize: '14px', fontWeight: '500', borderBottom: '2px solid #0d9488', paddingBottom: '14px', marginBottom: '-1px', fontFamily: 'Inter, sans-serif' }}>AI Materials</span>
           <div style={{ flex: 1 }} />
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
