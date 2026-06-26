@@ -26,11 +26,13 @@ function Sidebar() {
 
           {/* AI Materials */}
           <NavLink to="/materials" title="AI Materials"
-            style={{
+            style={({ isActive }) => ({
               width: '40px', height: '40px',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               textDecoration: 'none', background: 'transparent',
-            }}
+              borderLeft: isActive ? '3px solid #0d9488' : '3px solid transparent',
+              marginLeft: '-3px',
+            })}
           >
             {({ isActive }) => (
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={isActive ? '#0d9488' : '#94a3b8'} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -44,11 +46,13 @@ function Sidebar() {
 
           {/* Chat With AI */}
           <NavLink to="/chat" title="Chat With AI"
-            style={{
+            style={({ isActive }) => ({
               width: '40px', height: '40px',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               textDecoration: 'none', background: 'transparent',
-            }}
+              borderLeft: isActive ? '3px solid #0d9488' : '3px solid transparent',
+              marginLeft: '-3px',
+            })}
           >
             {({ isActive }) => (
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={isActive ? '#0d9488' : '#94a3b8'} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
