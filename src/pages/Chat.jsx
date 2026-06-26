@@ -50,11 +50,15 @@ function Chat() {
         background: 'white', padding: '0 24px',
         display: 'flex', alignItems: 'center',
         borderBottom: '1px solid #e2e8f0',
-        height: '52px', gap: '24px'
+        height: '52px', gap: '16px'
       }}>
         <span style={{ color: '#1e293b', fontSize: '14px', fontFamily: 'Inter, sans-serif', fontWeight: '600' }}>AilWingKB</span>
+        
+        {/* Divider */}
+        <div style={{ width: '1px', height: '20px', background: '#e2e8f0' }} />
+        
         <span style={{
-          color: '#0d9488', fontSize: '14px', fontWeight: '400',
+          color: '#1e293b', fontSize: '14px', fontWeight: '500',
           borderBottom: '2px solid #0d9488',
           paddingBottom: '14px', marginBottom: '-1px',
           fontFamily: 'Inter, sans-serif'
@@ -107,9 +111,9 @@ function Chat() {
               textAlign: 'center', paddingTop: '120px'
             }}>
               <div style={{
-              width: '56px', height: '56px', borderRadius: '50%',
-              background: 'radial-gradient(circle at 30% 30%, #4ade80 0%, #16a34a 40%, #064e3b 100%)',
-              marginBottom: '16px', flexShrink: 0
+                width: '56px', height: '56px', borderRadius: '50%',
+                background: 'radial-gradient(circle at 30% 30%, #4ade80 0%, #16a34a 40%, #064e3b 100%)',
+                marginBottom: '16px', flexShrink: 0
               }} />
               <h2 style={{
                 color: '#1e293b', fontSize: '22px', fontWeight: '600',
