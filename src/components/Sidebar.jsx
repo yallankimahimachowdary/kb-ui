@@ -13,7 +13,7 @@ function Sidebar() {
         paddingTop: '16px', paddingBottom: '20px', justifyContent: 'space-between',
         position: 'fixed', left: 0, top: 0, zIndex: 100
       }}>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', width: '100%' }}>
 
           {/* Hamburger */}
           <div onClick={() => setExpanded(true)} style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', marginBottom: '12px' }}>
@@ -27,19 +27,17 @@ function Sidebar() {
           {/* AI Materials */}
           <NavLink to="/materials" title="AI Materials"
             style={({ isActive }) => ({
-              width: '40px', height: '40px',
+              width: '100%', height: '48px',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               textDecoration: 'none',
               background: isActive ? '#0d9488' : 'transparent',
-              borderRadius: '10px',
-              borderLeft: isActive ? 'none' : 'none',
             })}
           >
             {({ isActive }) => (
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={isActive ? 'white' : '#94a3b8'} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
-                <circle cx="12" cy="14" r="2"/>
-                <path d="M12 12v-1"/>
+                <polyline points="12 11 12 17"/>
+                <polyline points="9 14 12 11 15 14"/>
               </svg>
             )}
           </NavLink>
@@ -47,17 +45,17 @@ function Sidebar() {
           {/* Chat With AI */}
           <NavLink to="/chat" title="Chat With AI"
             style={({ isActive }) => ({
-              width: '40px', height: '40px',
+              width: '100%', height: '48px',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               textDecoration: 'none',
               background: isActive ? '#0d9488' : 'transparent',
-              borderRadius: '10px',
             })}
           >
             {({ isActive }) => (
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={isActive ? 'white' : '#94a3b8'} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                <circle cx="12" cy="11" r="2"/>
+                <circle cx="11" cy="11" r="2"/>
+                <line x1="13" y1="13" x2="16" y2="16"/>
               </svg>
             )}
           </NavLink>
@@ -112,7 +110,8 @@ function Sidebar() {
                   <>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={isActive ? 'white' : '#94a3b8'} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
-                      <circle cx="12" cy="14" r="2"/>
+                      <polyline points="12 11 12 17"/>
+                      <polyline points="9 14 12 11 15 14"/>
                     </svg>
                     <span style={{ color: isActive ? 'white' : '#94a3b8', fontSize: '14px', fontFamily: 'Inter, sans-serif' }}>AI Materials</span>
                   </>
@@ -131,7 +130,8 @@ function Sidebar() {
                   <>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={isActive ? 'white' : '#94a3b8'} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                      <circle cx="12" cy="11" r="2"/>
+                      <circle cx="11" cy="11" r="2"/>
+                      <line x1="13" y1="13" x2="16" y2="16"/>
                     </svg>
                     <span style={{ color: isActive ? 'white' : '#94a3b8', fontSize: '14px', fontFamily: 'Inter, sans-serif' }}>Chat With AI</span>
                   </>
