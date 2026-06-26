@@ -18,9 +18,9 @@ function Sidebar() {
           {/* Hamburger */}
           <div onClick={() => setExpanded(true)} style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', marginBottom: '12px' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-              <div style={{ width: '18px', height: '2px', background: '#94a3b8', borderRadius: '2px' }} />
-              <div style={{ width: '18px', height: '2px', background: '#94a3b8', borderRadius: '2px' }} />
-              <div style={{ width: '18px', height: '2px', background: '#94a3b8', borderRadius: '2px' }} />
+              <div style={{ width: '18px', height: '2px', background: '#0d9488', borderRadius: '2px' }} />
+              <div style={{ width: '18px', height: '2px', background: '#0d9488', borderRadius: '2px' }} />
+              <div style={{ width: '18px', height: '2px', background: '#0d9488', borderRadius: '2px' }} />
             </div>
           </div>
 
@@ -29,17 +29,17 @@ function Sidebar() {
             style={({ isActive }) => ({
               width: '40px', height: '40px',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              textDecoration: 'none', background: 'transparent',
-              borderLeft: isActive ? '3px solid #0d9488' : '3px solid transparent',
-              marginLeft: '-3px',
+              textDecoration: 'none',
+              background: isActive ? '#0d9488' : 'transparent',
+              borderRadius: '10px',
+              borderLeft: isActive ? 'none' : 'none',
             })}
           >
             {({ isActive }) => (
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={isActive ? '#0d9488' : '#94a3b8'} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                <polyline points="14 2 14 8 20 8"/>
-                <line x1="8" y1="13" x2="16" y2="13"/>
-                <line x1="8" y1="17" x2="13" y2="17"/>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={isActive ? 'white' : '#94a3b8'} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                <circle cx="12" cy="14" r="2"/>
+                <path d="M12 12v-1"/>
               </svg>
             )}
           </NavLink>
@@ -49,14 +49,15 @@ function Sidebar() {
             style={({ isActive }) => ({
               width: '40px', height: '40px',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              textDecoration: 'none', background: 'transparent',
-              borderLeft: isActive ? '3px solid #0d9488' : '3px solid transparent',
-              marginLeft: '-3px',
+              textDecoration: 'none',
+              background: isActive ? '#0d9488' : 'transparent',
+              borderRadius: '10px',
             })}
           >
             {({ isActive }) => (
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={isActive ? '#0d9488' : '#94a3b8'} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={isActive ? 'white' : '#94a3b8'} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                <circle cx="12" cy="11" r="2"/>
               </svg>
             )}
           </NavLink>
@@ -76,12 +77,10 @@ function Sidebar() {
       {/* Expanded panel overlay */}
       {expanded && (
         <>
-          {/* Dark overlay */}
           <div onClick={() => setExpanded(false)} style={{
             position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)', zIndex: 98
           }} />
 
-          {/* Expanded panel */}
           <div style={{
             position: 'fixed', left: '56px', top: 0,
             width: '220px', height: '100vh',
@@ -90,20 +89,17 @@ function Sidebar() {
             paddingTop: '16px', paddingBottom: '20px',
           }}>
 
-            {/* Top: Title + close hamburger */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px', marginBottom: '24px' }}>
               <span style={{ color: 'white', fontSize: '15px', fontWeight: '600', fontFamily: 'Inter, sans-serif' }}>AilWingBot</span>
               <div onClick={() => setExpanded(false)} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: '5px' }}>
-                <div style={{ width: '18px', height: '2px', background: '#94a3b8', borderRadius: '2px' }} />
-                <div style={{ width: '18px', height: '2px', background: '#94a3b8', borderRadius: '2px' }} />
-                <div style={{ width: '18px', height: '2px', background: '#94a3b8', borderRadius: '2px' }} />
+                <div style={{ width: '18px', height: '2px', background: '#0d9488', borderRadius: '2px' }} />
+                <div style={{ width: '18px', height: '2px', background: '#0d9488', borderRadius: '2px' }} />
+                <div style={{ width: '18px', height: '2px', background: '#0d9488', borderRadius: '2px' }} />
               </div>
             </div>
 
-            {/* Nav links */}
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '4px', padding: '0 8px' }}>
 
-              {/* AI Materials */}
               <NavLink to="/materials" onClick={() => setExpanded(false)}
                 style={({ isActive }) => ({
                   display: 'flex', alignItems: 'center', gap: '12px',
@@ -115,17 +111,14 @@ function Sidebar() {
                 {({ isActive }) => (
                   <>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={isActive ? 'white' : '#94a3b8'} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                      <polyline points="14 2 14 8 20 8"/>
-                      <line x1="8" y1="13" x2="16" y2="13"/>
-                      <line x1="8" y1="17" x2="13" y2="17"/>
+                      <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                      <circle cx="12" cy="14" r="2"/>
                     </svg>
                     <span style={{ color: isActive ? 'white' : '#94a3b8', fontSize: '14px', fontFamily: 'Inter, sans-serif' }}>AI Materials</span>
                   </>
                 )}
               </NavLink>
 
-              {/* Chat With AI */}
               <NavLink to="/chat" onClick={() => setExpanded(false)}
                 style={({ isActive }) => ({
                   display: 'flex', alignItems: 'center', gap: '12px',
@@ -138,6 +131,7 @@ function Sidebar() {
                   <>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={isActive ? 'white' : '#94a3b8'} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                      <circle cx="12" cy="11" r="2"/>
                     </svg>
                     <span style={{ color: isActive ? 'white' : '#94a3b8', fontSize: '14px', fontFamily: 'Inter, sans-serif' }}>Chat With AI</span>
                   </>
@@ -146,7 +140,6 @@ function Sidebar() {
 
             </div>
 
-            {/* Logout */}
             <div style={{ padding: '0 8px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '10px 12px', borderRadius: '8px', cursor: 'pointer' }}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
