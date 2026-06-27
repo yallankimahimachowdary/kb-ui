@@ -114,11 +114,10 @@ function Chat() {
               alignItems: 'center', justifyContent: 'center',
               textAlign: 'center', paddingTop: '120px', gap: '12px'
             }}>
-              {/* Figma bot avatar - 3D sphere with highlight */}
+              {/* Figma bot avatar */}
               <div style={{
                 width: '76px', height: '76px', borderRadius: '50%',
-                background: `radial-gradient(circle at 35% 35%, #a8f0d8 0%, #2dd4a0 20%, #0d9e72 50%, #065c42 80%, #032e21 100%)`,
-                boxShadow: '0 4px 16px rgba(13, 158, 114, 0.35)',
+                background: `radial-gradient(circle at 30% 70%, #4fffb0 0%, #00c97a 25%, #00835a 55%, #003d2b 80%, #001a12 100%)`,
                 flexShrink: 0
               }} />
 
