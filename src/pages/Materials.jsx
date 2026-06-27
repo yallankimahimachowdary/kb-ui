@@ -212,18 +212,10 @@ function UploadWizard({ onClose, onSuccess }) {
         borderBottom: '1px solid #e2e8f0',
         height: '52px',
         gap: '16px',
-        overflow: 'hidden',          /* keeps stretch divider inside the bar */
+        overflow: 'hidden',
       }}>
         <span style={{ color: '#1e293b', fontSize: '14px', fontFamily: 'Inter, sans-serif', fontWeight: '600' }}>AilWingKB</span>
-
-        {/* ── Rectangle 4677 — 2 px wide, full navbar height, #F2F3F5 ── */}
-        <div style={{
-          width: '2px',
-          alignSelf: 'stretch',
-          background: '#F2F3F5',
-          flexShrink: 0,
-        }} />
-
+        <div style={{ width: '2px', alignSelf: 'stretch', background: '#F2F3F5', flexShrink: 0 }} />
         <span style={{ color: '#1e293b', fontSize: '14px', fontWeight: '500', borderBottom: '2px solid #0d9488', paddingBottom: '14px', marginBottom: '-1px', fontFamily: 'Inter, sans-serif' }}>AI Materials</span>
         <div style={{ flex: 1 }} />
         <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: '#e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -375,18 +367,10 @@ function Materials() {
           borderBottom: '1px solid #e2e8f0',
           height: '52px',
           gap: '24px',
-          overflow: 'hidden',          /* keeps stretch divider inside the bar */
+          overflow: 'hidden',
         }}>
           <span style={{ color: '#1e293b', fontSize: '14px', fontFamily: 'Inter, sans-serif', fontWeight: '600' }}>AilWingKB</span>
-
-          {/* ── Rectangle 4677 — 2 px wide, full navbar height, #F2F3F5 ── */}
-          <div style={{
-            width: '2px',
-            alignSelf: 'stretch',
-            background: '#F2F3F5',
-            flexShrink: 0,
-          }} />
-
+          <div style={{ width: '2px', alignSelf: 'stretch', background: '#F2F3F5', flexShrink: 0 }} />
           <span style={{ color: '#1e293b', fontSize: '14px', fontWeight: '500', borderBottom: '2px solid #0d9488', paddingBottom: '14px', marginBottom: '-1px', fontFamily: 'Inter, sans-serif' }}>AI Materials</span>
           <div style={{ flex: 1 }} />
           <svg width="22" height="22" viewBox="1660 24 26 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -398,10 +382,44 @@ function Materials() {
           </div>
         </div>
 
-        {/* Breadcrumb + Upload */}
-        <div style={{ padding: '10px 24px', fontSize: '12px', color: '#94a3b8', fontFamily: 'Inter, sans-serif', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'white' }}>
-          <span><span style={{ color: '#94a3b8', fontWeight: 400 }}>Home</span> <span style={{ margin: '0 4px' }}>›</span><span style={{ color: '#1e293b', fontWeight: 700 }}>AI Materials</span></span>
-          <button onClick={() => setShowWizard(true)} style={{ background: '#0AA182', color: 'white', border: '1px solid #0AA182', padding: '9px 12px', borderRadius: '8px', cursor: 'pointer', fontSize: '13px', fontFamily: 'Inter, sans-serif', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '10px', height: '42px', boxSizing: 'border-box' }}>
+        {/* ── Breadcrumb + Upload ──
+            Figma: compact bar, Upload button ~36px tall, teal bg, + icon + label */}
+        <div style={{
+          padding: '8px 24px',
+          fontSize: '12px',
+          color: '#94a3b8',
+          fontFamily: 'Inter, sans-serif',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          background: 'white',
+          borderBottom: '1px solid #f1f5f9',
+        }}>
+          <span>
+            <span style={{ color: '#94a3b8', fontWeight: 400 }}>Home</span>
+            <span style={{ margin: '0 6px', color: '#94a3b8' }}>›</span>
+            <span style={{ color: '#1e293b', fontWeight: 600 }}>AI Materials</span>
+          </span>
+          {/* Upload button: Figma shows ~36px height, teal, rounded-lg */}
+          <button
+            onClick={() => setShowWizard(true)}
+            style={{
+              background: '#0AA182',
+              color: 'white',
+              border: 'none',
+              padding: '0 16px',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              fontSize: '13px',
+              fontFamily: 'Inter, sans-serif',
+              fontWeight: '500',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              height: '36px',
+              boxSizing: 'border-box',
+            }}
+          >
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M0 6H12" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               <path d="M6 12V0" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -410,37 +428,83 @@ function Materials() {
           </button>
         </div>
 
-        {/* Content */}
-        <div style={{ padding: '16px 24px 24px' }}>
+        {/* ── Content area ── */}
+        <div style={{ padding: '20px 24px 24px' }}>
 
-          {/* AI Materials heading + Search + Filter */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
+          {/* ── Page title row + Search/Filter ──
+              Figma: title "AI Materials" ~20px, weight 400, icon 20px, gap 8px
+              Search bar ~36px tall; filter button same height */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: '16px',
+          }}>
 
-            {/* Left: Icon + Title */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <svg width="22" height="22" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {/* Left: icon + title */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <svg width="20" height="20" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M10.125 24.75H7.875C3.375 24.75 2.25 23.625 2.25 19.125V7.875C2.25 3.375 3.375 2.25 7.875 2.25H9.5625C11.25 2.25 11.6213 2.74501 12.2625 3.60001L13.95 5.85001C14.3775 6.41251 14.625 6.75 15.75 6.75H19.125C23.625 6.75 24.75 7.875 24.75 12.375V14.625" stroke="#1e293b" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M15.48 20.6101C12.8363 20.8013 12.8363 24.6263 15.48 24.8176H21.735C22.4888 24.8176 23.2313 24.5363 23.7825 24.03C25.6388 22.41 24.6487 19.17 22.2075 18.8663C21.33 13.59 13.7025 15.5925 15.5025 20.6213" stroke="#1e293b" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-              <span style={{ fontSize: '24px', fontWeight: 400, color: '#000000', fontFamily: 'Inter, sans-serif' }}>
+              <span style={{
+                fontSize: '20px',
+                fontWeight: 400,
+                color: '#0f172a',
+                fontFamily: 'Inter, sans-serif',
+                lineHeight: 1,
+              }}>
                 AI Materials
               </span>
             </div>
 
-            {/* Right: Search + Filter */}
+            {/* Right: Search input + Filter button — both 36px tall */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', background: 'white', border: '1px solid #e2e8f0', borderRadius: '8px', padding: '7px 12px', gap: '8px' }}>
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              {/* Search */}
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                background: 'white',
+                border: '1px solid #e2e8f0',
+                borderRadius: '8px',
+                padding: '0 12px',
+                gap: '8px',
+                height: '36px',
+                boxSizing: 'border-box',
+              }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
                 </svg>
                 <input
                   value={search}
                   onChange={(e) => { setSearch(e.target.value); setPage(1) }}
                   placeholder="Search"
-                  style={{ border: 'none', outline: 'none', fontSize: '13px', fontFamily: 'Inter, sans-serif', color: '#1e293b', background: 'transparent', width: '160px' }}
+                  style={{
+                    border: 'none',
+                    outline: 'none',
+                    fontSize: '13px',
+                    fontFamily: 'Inter, sans-serif',
+                    color: '#1e293b',
+                    background: 'transparent',
+                    width: '180px',
+                    height: '100%',
+                  }}
                 />
               </div>
-              <button style={{ width: '34px', height: '34px', borderRadius: '8px', border: '1px solid #e2e8f0', background: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
+              {/* Filter — exactly same 36px height as search */}
+              <button style={{
+                width: '36px',
+                height: '36px',
+                borderRadius: '8px',
+                border: '1px solid #e2e8f0',
+                background: 'white',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                flexShrink: 0,
+                boxSizing: 'border-box',
+              }}>
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#64748b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="4" y1="6" x2="20" y2="6"/>
                   <line x1="8" y1="12" x2="16" y2="12"/>
@@ -448,54 +512,86 @@ function Materials() {
                 </svg>
               </button>
             </div>
-
           </div>
 
-          {/* Table */}
-          <div style={{ background: 'white', borderRadius: '12px', overflow: 'hidden' }}>
+          {/* ── Table ──
+              Figma: white card, no outer radius visible, clean row separators */}
+          <div style={{ background: 'white', borderRadius: '10px', overflow: 'hidden', border: '1px solid #f1f5f9' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse' }}>
               <thead>
-                <tr style={{ background: '#f8fafc' }}>
+                <tr>
+                  {/* Figma thead: very light mint #e8faf6 / teal-50, text slate-400, 12px, weight 400 */}
                   <th style={thStyle}>Material Name</th>
                   <th style={thStyle}>Type</th>
                   <th style={thStyle}>Size</th>
                   <th style={thStyle}>Uploaded On</th>
                   <th style={thStyle}>Status</th>
-                  <th style={thStyle}>Action</th>
+                  <th style={{ ...thStyle, textAlign: 'right', paddingRight: '20px' }}>Action</th>
                 </tr>
               </thead>
               <tbody>
                 {loading ? (
-                  <tr><td colSpan={6} style={{ textAlign: 'center', padding: '40px', color: '#94a3b8', fontFamily: 'Inter, sans-serif' }}>Loading...</td></tr>
+                  <tr><td colSpan={6} style={{ textAlign: 'center', padding: '40px', color: '#94a3b8', fontFamily: 'Inter, sans-serif', fontSize: '13px' }}>Loading...</td></tr>
                 ) : materials.length === 0 ? (
-                  <tr><td colSpan={6} style={{ textAlign: 'center', padding: '40px', color: '#94a3b8', fontFamily: 'Inter, sans-serif' }}>No materials found.</td></tr>
+                  <tr><td colSpan={6} style={{ textAlign: 'center', padding: '40px', color: '#94a3b8', fontFamily: 'Inter, sans-serif', fontSize: '13px' }}>No materials found.</td></tr>
                 ) : (
                   materials.map((item) => (
-                    <tr key={item.id} style={{ borderTop: '1px solid #f1f5f9', borderBottom: 'none' }}>
+                    <tr key={item.id} style={{ borderTop: '1px solid #f1f5f9' }}>
                       <td style={tdStyle}>{item.file_name}</td>
                       <td style={tdStyle}>PDF</td>
                       <td style={tdStyle}>{item.file_size_bytes ? (item.file_size_bytes / 1024).toFixed(0) + 'KB' : '-'}</td>
                       <td style={tdStyle}>{item.created_at ? new Date(item.created_at).toLocaleString() : '-'}</td>
                       <td style={tdStyle}>
+                        {/* Figma badge: pill shape, compact horizontal padding */}
                         <span style={{
-                          background: item.status === 'active' ? '#d1fae5' : '#fef3c7',
-                          color: item.status === 'active' ? '#0d9488' : '#d97706',
-                          padding: '4px 12px', borderRadius: '20px',
-                          fontSize: '12px', fontWeight: '500', fontFamily: 'Inter, sans-serif'
+                          display: 'inline-block',
+                          background: item.status === 'active' ? '#d1fae5' : '#fef9c3',
+                          color: item.status === 'active' ? '#0d9488' : '#b45309',
+                          padding: '3px 10px',
+                          borderRadius: '999px',
+                          fontSize: '12px',
+                          fontWeight: '500',
+                          fontFamily: 'Inter, sans-serif',
+                          lineHeight: '1.5',
                         }}>
                           {item.status === 'active' ? 'Active' : 'Inactive'}
                         </span>
                       </td>
-                      <td style={tdStyle}>
-                        <div style={{ position: 'relative', display: 'inline-block' }}>
+                      {/* Action column: icon centred, menu drops from it */}
+                      <td style={{ ...tdStyle, textAlign: 'right', paddingRight: '20px' }}>
+                        <div style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
                           <button
                             onClick={(e) => { e.stopPropagation(); setOpenMenuId(openMenuId === item.id ? null : item.id) }}
-                            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '0', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '24px', height: '24px' }}
+                            style={{
+                              background: 'none',
+                              border: 'none',
+                              cursor: 'pointer',
+                              padding: '0',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              width: '24px',
+                              height: '24px',
+                            }}
                           >
                             <MoreHorizIcon />
                           </button>
                           {openMenuId === item.id && (
-                            <div onClick={(e) => e.stopPropagation()} style={{ position: 'absolute', right: 0, top: '32px', background: 'white', borderRadius: '10px', boxShadow: '0 4px 24px rgba(0,0,0,0.12)', zIndex: 100, minWidth: '180px', overflow: 'hidden', border: '1px solid #f1f5f9' }}>
+                            <div
+                              onClick={(e) => e.stopPropagation()}
+                              style={{
+                                position: 'absolute',
+                                right: 0,
+                                top: '28px',
+                                background: 'white',
+                                borderRadius: '10px',
+                                boxShadow: '0 4px 24px rgba(0,0,0,0.12)',
+                                zIndex: 100,
+                                minWidth: '180px',
+                                overflow: 'hidden',
+                                border: '1px solid #f1f5f9',
+                              }}
+                            >
                               {item.status === 'active' ? (
                                 <button onClick={() => { setModal({ type: 'suspend', item }); setOpenMenuId(null) }} style={menuItemStyle}>
                                   <SuspendIcon /><span style={{ color: '#f59e0b' }}>Suspend Material</span>
@@ -520,13 +616,37 @@ function Materials() {
             </table>
           </div>
 
-          {/* Pagination */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '16px', fontSize: '12px', color: '#64748b', fontFamily: 'Inter, sans-serif' }}>
+          {/* ── Pagination ── */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginTop: '14px',
+            fontSize: '12px',
+            color: '#64748b',
+            fontFamily: 'Inter, sans-serif',
+          }}>
             <span>Showing {materials.length} of {total} items</span>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
               <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1} style={pageBtn(page === 1)}>‹</button>
               {[...Array(totalPages)].map((_, i) => (
-                <button key={i} onClick={() => setPage(i + 1)} style={{ width: '28px', height: '28px', borderRadius: '6px', border: '1px solid #e2e8f0', background: page === i + 1 ? '#0d9488' : 'white', color: page === i + 1 ? 'white' : '#64748b', cursor: 'pointer', fontSize: '12px', fontFamily: 'Inter, sans-serif' }}>{i + 1}</button>
+                <button
+                  key={i}
+                  onClick={() => setPage(i + 1)}
+                  style={{
+                    width: '28px',
+                    height: '28px',
+                    borderRadius: '6px',
+                    border: '1px solid #e2e8f0',
+                    background: page === i + 1 ? '#0d9488' : 'white',
+                    color: page === i + 1 ? 'white' : '#64748b',
+                    cursor: 'pointer',
+                    fontSize: '12px',
+                    fontFamily: 'Inter, sans-serif',
+                  }}
+                >
+                  {i + 1}
+                </button>
               ))}
               <button onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page === totalPages} style={pageBtn(page === totalPages)}>›</button>
             </div>
@@ -537,28 +657,56 @@ function Materials() {
   )
 }
 
+/* ─────────────────────────────────────────────
+   Shared style objects — only styling, no logic
+   ───────────────────────────────────────────── */
+
 const thStyle = {
-  padding: '11px 16px', textAlign: 'left',
-  color: '#94a3b8', fontWeight: '400', fontSize: '12px',
-  fontFamily: 'Inter, sans-serif', background: '#f0fdf9'
+  /* Figma: very light mint header, slate-400 label, 12px regular, 9px vertical padding */
+  padding: '9px 16px',
+  textAlign: 'left',
+  color: '#94a3b8',
+  fontWeight: '400',
+  fontSize: '12px',
+  fontFamily: 'Inter, sans-serif',
+  background: '#f0fdf9',           /* mint-50 — matches Figma thead tint */
+  whiteSpace: 'nowrap',
 }
+
 const tdStyle = {
-  padding: '13px 16px', color: '#1e293b', fontSize: '13px',
-  fontFamily: 'Inter, sans-serif'
+  /* Figma rows: 11px vertical padding → tighter than before (was 13px) */
+  padding: '11px 16px',
+  color: '#334155',                /* slate-700 — slightly softer than pure #1e293b */
+  fontSize: '13px',
+  fontFamily: 'Inter, sans-serif',
+  lineHeight: '1.4',
+  verticalAlign: 'middle',
 }
+
 const menuItemStyle = {
-  display: 'flex', alignItems: 'center', gap: '10px',
-  width: '100%', padding: '10px 14px',
-  background: 'none', border: 'none',
-  fontSize: '13px', textAlign: 'left', cursor: 'pointer',
-  fontFamily: 'Inter, sans-serif'
+  display: 'flex',
+  alignItems: 'center',
+  gap: '10px',
+  width: '100%',
+  padding: '10px 14px',
+  background: 'none',
+  border: 'none',
+  fontSize: '13px',
+  textAlign: 'left',
+  cursor: 'pointer',
+  fontFamily: 'Inter, sans-serif',
 }
+
 const pageBtn = (disabled) => ({
-  width: '28px', height: '28px', borderRadius: '6px',
-  border: '1px solid #e2e8f0', background: 'white',
+  width: '28px',
+  height: '28px',
+  borderRadius: '6px',
+  border: '1px solid #e2e8f0',
+  background: 'white',
   color: disabled ? '#cbd5e1' : '#64748b',
-  cursor: disabled ? 'not-allowed' : 'pointer', fontSize: '14px',
-  fontFamily: 'Inter, sans-serif'
+  cursor: disabled ? 'not-allowed' : 'pointer',
+  fontSize: '14px',
+  fontFamily: 'Inter, sans-serif',
 })
 
 export default Materials
