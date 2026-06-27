@@ -57,12 +57,26 @@ function Chat() {
 
         <div style={{ width: '1px', height: '20px', background: '#e2e8f0' }} />
 
+        {/* Active tab with tight, centered underline indicator */}
         <span style={{
+          position: 'relative',
+          display: 'inline-block',
           color: '#1e293b', fontSize: '14px', fontWeight: '500',
-          borderBottom: '2px solid #0d9488',
-          paddingBottom: '14px', marginBottom: '-1px',
+          paddingBottom: '14px',
+          marginBottom: '-1px',
           fontFamily: 'Inter, sans-serif'
-        }}>Chat With AI</span>
+        }}>
+          Chat With AI
+          <span style={{
+            position: 'absolute',
+            left: '-6px',
+            right: '-6px',
+            bottom: '0px',
+            height: '2px',
+            borderRadius: '2px',
+            background: '#0d9488'
+          }} />
+        </span>
 
         <div style={{ flex: 1 }} />
 
