@@ -114,28 +114,13 @@ function Chat() {
               alignItems: 'center', justifyContent: 'center',
               textAlign: 'center', paddingTop: '120px', gap: '12px'
             }}>
-              {/* Exact Figma bot avatar */}
-              <svg width="76" height="76" viewBox="522 -1 76 77" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-                <defs>
-                  <pattern id="botAvatarPattern" patternContentUnits="objectBoundingBox" width="1" height="1">
-                    <use xlinkHref="#botAvatarImg" transform="scale(0.000520833)"/>
-                  </pattern>
-                  <image id="botAvatarImg" width="1920" height="1920"
-                    xlinkHref="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=200&h=200&fit=crop&crop=center"
-                  />
-                </defs>
-                <circle cx="560" cy="37.74" r="37.74"
-                  fill="url(#paint0_radial)"
-                />
-                <defs>
-                  <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                    gradientTransform="translate(541 20) rotate(45) scale(60)">
-                    <stop offset="0%" stopColor="#6ee7b7"/>
-                    <stop offset="40%" stopColor="#10b981"/>
-                    <stop offset="100%" stopColor="#064e3b"/>
-                  </radialGradient>
-                </defs>
-              </svg>
+              {/* Figma bot avatar - 3D sphere with highlight */}
+              <div style={{
+                width: '76px', height: '76px', borderRadius: '50%',
+                background: `radial-gradient(circle at 35% 35%, #a8f0d8 0%, #2dd4a0 20%, #0d9e72 50%, #065c42 80%, #032e21 100%)`,
+                boxShadow: '0 4px 16px rgba(13, 158, 114, 0.35)',
+                flexShrink: 0
+              }} />
 
               <h2 style={{
                 color: '#1e293b', fontSize: '22px', fontWeight: '600',
