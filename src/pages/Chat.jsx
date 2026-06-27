@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { sendChatMessage } from '../api'
+import awbotLogo from '../assets/awbot.png'
 
 function Chat() {
   const [messages, setMessages] = useState([])
@@ -65,7 +66,7 @@ function Chat() {
 
         <div style={{ flex: 1 }} />
 
-        {/* Bell icon - exact Figma paths */}
+        {/* Bell icon */}
         <svg width="22" height="22" viewBox="1660 24 26 28" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M1673 32.44V35.77M1673.02 28C1669.34 28 1666.36 30.98 1666.36 34.66V36.76C1666.36 37.44 1666.08 38.46 1665.73 39.04L1664.46 41.16C1663.68 42.47 1664.22 43.93 1665.66 44.41C1670.44 46 1675.61 46 1680.39 44.41C1680.71 44.3048 1680.99 44.13 1681.23 43.8986C1681.47 43.6671 1681.65 43.385 1681.77 43.073C1681.89 42.761 1681.93 42.4271 1681.9 42.096C1681.87 41.7649 1681.76 41.445 1681.59 41.16L1680.32 39.04C1679.97 38.46 1679.69 37.43 1679.69 36.76V34.66C1679.68 31 1676.68 28 1673.02 28Z" stroke="#64748b" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round"/>
           <path d="M1676.33 44.8199C1676.33 46.6499 1674.83 48.1499 1673 48.1499C1672.09 48.1499 1671.25 47.7699 1670.65 47.1699C1670.05 46.5699 1669.67 45.7299 1669.67 44.8199" stroke="#64748b" strokeWidth="1.5" strokeMiterlimit="10"/>
@@ -107,19 +108,25 @@ function Chat() {
           display: 'flex', flexDirection: 'column', gap: '20px',
         }}>
 
-          {/* Welcome state - exact Figma avatar SVG */}
+          {/* Welcome state */}
           {messages.length === 0 && !loading && (
             <div style={{
               flex: 1, display: 'flex', flexDirection: 'column',
               alignItems: 'center', justifyContent: 'center',
               textAlign: 'center', paddingTop: '120px', gap: '12px'
             }}>
-              {/* Figma bot avatar */}
-              <div style={{
-                width: '76px', height: '76px', borderRadius: '50%',
-                background: `radial-gradient(circle at 30% 70%, #4fffb0 0%, #00c97a 25%, #00835a 55%, #003d2b 80%, #001a12 100%)`,
-                flexShrink: 0
-              }} />
+
+              {/* ✅ Exact Figma logo - imported from src/assets/awbot.png */}
+              <img
+                src={awbotLogo}
+                alt="AwBot"
+                style={{
+                  width: '76px',
+                  height: '76px',
+                  flexShrink: 0,
+                  display: 'block'
+                }}
+              />
 
               <h2 style={{
                 color: '#1e293b', fontSize: '22px', fontWeight: '600',
