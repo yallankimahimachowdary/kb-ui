@@ -48,14 +48,25 @@ function Chat() {
 
       {/* Navbar */}
       <div style={{
-        background: 'white', padding: '0 24px',
-        display: 'flex', alignItems: 'center',
+        background: 'white',
+        paddingLeft: '24px',
+        paddingRight: '24px',
+        display: 'flex',
+        alignItems: 'center',
         borderBottom: '1px solid #e2e8f0',
-        height: '52px', gap: '16px'
+        height: '52px',
+        gap: '16px',
+        overflow: 'hidden',   /* prevents child stretch from blowing out the bar */
       }}>
         <span style={{ color: '#1e293b', fontSize: '14px', fontFamily: 'Inter, sans-serif', fontWeight: '600' }}>AilWingKB</span>
 
-        <div style={{ width: '1px', height: '20px', background: '#e2e8f0' }} />
+        {/* ── Rectangle 4677 ── 2 px wide, full navbar height, #F2F3F5 */}
+        <div style={{
+          width: '2px',
+          alignSelf: 'stretch',   /* stretches to the navbar's 52 px */
+          background: '#F2F3F5',
+          flexShrink: 0,
+        }} />
 
         <span style={{
           color: '#1e293b', fontSize: '14px', fontWeight: '500',
@@ -115,19 +126,11 @@ function Chat() {
               alignItems: 'center', justifyContent: 'center',
               textAlign: 'center', paddingTop: '120px', gap: '12px'
             }}>
-
-              {/* ✅ Exact Figma logo - imported from src/assets/awbot.png */}
               <img
                 src={awbotLogo}
                 alt="AwBot"
-                style={{
-                  width: '76px',
-                  height: '76px',
-                  flexShrink: 0,
-                  display: 'block'
-                }}
+                style={{ width: '76px', height: '76px', flexShrink: 0, display: 'block' }}
               />
-
               <h2 style={{
                 color: '#1e293b', fontSize: '22px', fontWeight: '600',
                 margin: 0, fontFamily: 'Inter, sans-serif'
