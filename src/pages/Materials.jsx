@@ -344,8 +344,9 @@ function Materials() {
           <div style={{ width: '1px', height: '20px', background: '#e2e8f0' }} />
           <span style={{ color: '#1e293b', fontSize: '14px', fontWeight: '500', borderBottom: '2px solid #0d9488', paddingBottom: '14px', marginBottom: '-1px', fontFamily: 'Inter, sans-serif' }}>AI Materials</span>
           <div style={{ flex: 1 }} />
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+          <svg width="22" height="22" viewBox="1660 24 26 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1673 32.44V35.77M1673.02 28C1669.34 28 1666.36 30.98 1666.36 34.66V36.76C1666.36 37.44 1666.08 38.46 1665.73 39.04L1664.46 41.16C1663.68 42.47 1664.22 43.93 1665.66 44.41C1670.44 46 1675.61 46 1680.39 44.41C1680.71 44.3048 1680.99 44.13 1681.23 43.8986C1681.47 43.6671 1681.65 43.385 1681.77 43.073C1681.89 42.761 1681.93 42.4271 1681.9 42.096C1681.87 41.7649 1681.76 41.445 1681.59 41.16L1680.32 39.04C1679.97 38.46 1679.69 37.43 1679.69 36.76V34.66C1679.68 31 1676.68 28 1673.02 28Z" stroke="#64748b" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round"/>
+            <path d="M1676.33 44.8199C1676.33 46.6499 1674.83 48.1499 1673 48.1499C1672.09 48.1499 1671.25 47.7699 1670.65 47.1699C1670.05 46.5699 1669.67 45.7299 1669.67 44.8199" stroke="#64748b" strokeWidth="1.5" strokeMiterlimit="10"/>
           </svg>
           <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: '#e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'center', marginLeft: '8px' }}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="#94a3b8"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
