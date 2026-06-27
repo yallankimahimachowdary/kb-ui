@@ -193,10 +193,28 @@ function UploadWizard({ onClose, onSuccess }) {
         </div>
       )}
 
-      {/* Wizard Navbar */}
-      <div style={{ background: 'white', padding: '0 24px', display: 'flex', alignItems: 'center', borderBottom: '1px solid #e2e8f0', height: '52px', gap: '16px' }}>
+      {/* ── Wizard Navbar ── */}
+      <div style={{
+        background: 'white',
+        paddingLeft: '24px',
+        paddingRight: '24px',
+        display: 'flex',
+        alignItems: 'center',
+        borderBottom: '1px solid #e2e8f0',
+        height: '52px',
+        gap: '16px',
+        overflow: 'hidden',          /* keeps stretch divider inside the bar */
+      }}>
         <span style={{ color: '#1e293b', fontSize: '14px', fontFamily: 'Inter, sans-serif', fontWeight: '600' }}>AilWingKB</span>
-        <div style={{ width: '1px', height: '20px', background: '#e2e8f0' }} />
+
+        {/* ── Rectangle 4677 — 2 px wide, full navbar height, #F2F3F5 ── */}
+        <div style={{
+          width: '2px',
+          alignSelf: 'stretch',
+          background: '#F2F3F5',
+          flexShrink: 0,
+        }} />
+
         <span style={{ color: '#1e293b', fontSize: '14px', fontWeight: '500', borderBottom: '2px solid #0d9488', paddingBottom: '14px', marginBottom: '-1px', fontFamily: 'Inter, sans-serif' }}>AI Materials</span>
         <div style={{ flex: 1 }} />
         <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: '#e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -338,10 +356,28 @@ function Materials() {
 
         {modal && <Modal type={modal.type} onCancel={() => setModal(null)} onConfirm={confirmAction} />}
 
-        {/* Navbar */}
-        <div style={{ background: 'white', padding: '0 24px', display: 'flex', alignItems: 'center', borderBottom: '1px solid #e2e8f0', height: '52px', gap: '24px' }}>
+        {/* ── Main Navbar ── */}
+        <div style={{
+          background: 'white',
+          paddingLeft: '24px',
+          paddingRight: '24px',
+          display: 'flex',
+          alignItems: 'center',
+          borderBottom: '1px solid #e2e8f0',
+          height: '52px',
+          gap: '24px',
+          overflow: 'hidden',          /* keeps stretch divider inside the bar */
+        }}>
           <span style={{ color: '#1e293b', fontSize: '14px', fontFamily: 'Inter, sans-serif', fontWeight: '600' }}>AilWingKB</span>
-          <div style={{ width: '1px', height: '20px', background: '#e2e8f0' }} />
+
+          {/* ── Rectangle 4677 — 2 px wide, full navbar height, #F2F3F5 ── */}
+          <div style={{
+            width: '2px',
+            alignSelf: 'stretch',
+            background: '#F2F3F5',
+            flexShrink: 0,
+          }} />
+
           <span style={{ color: '#1e293b', fontSize: '14px', fontWeight: '500', borderBottom: '2px solid #0d9488', paddingBottom: '14px', marginBottom: '-1px', fontFamily: 'Inter, sans-serif' }}>AI Materials</span>
           <div style={{ flex: 1 }} />
           <svg width="22" height="22" viewBox="1660 24 26 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -368,7 +404,7 @@ function Materials() {
         {/* Content */}
         <div style={{ padding: '16px 24px 24px' }}>
 
-          {/* ✅ AI Materials heading + Search + Filter */}
+          {/* AI Materials heading + Search + Filter */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
 
             {/* Left: Icon + Title */}
