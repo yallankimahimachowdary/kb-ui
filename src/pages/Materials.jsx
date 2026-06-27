@@ -402,7 +402,7 @@ function Materials() {
           </div>
 
           {/* Table */}
-          <div style={{ background: 'white', borderRadius: '12px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+          <div style={{ background: 'white', borderRadius: '12px', overflow: 'hidden' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse' }}>
               <thead>
                 <tr style={{ background: '#f8fafc' }}>
@@ -421,7 +421,7 @@ function Materials() {
                   <tr><td colSpan={6} style={{ textAlign: 'center', padding: '40px', color: '#94a3b8', fontFamily: 'Inter, sans-serif' }}>No materials found.</td></tr>
                 ) : (
                   materials.map((item) => (
-                    <tr key={item.id} style={{ borderTop: '1px solid #f1f5f9' }}>
+                    <tr key={item.id} style={{ borderTop: '1px solid #f1f5f9', borderBottom: 'none' }}>
                       <td style={tdStyle}>{item.file_name}</td>
                       <td style={tdStyle}>PDF</td>
                       <td style={tdStyle}>{item.file_size_bytes ? (item.file_size_bytes / 1024).toFixed(0) + 'KB' : '-'}</td>
