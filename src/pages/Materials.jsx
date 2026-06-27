@@ -354,7 +354,7 @@ function Materials() {
         </div>
 
         {/* Breadcrumb + Upload */}
-        <div style={{ padding: '10px 24px', fontSize: '12px', color: '#94a3b8', fontFamily: 'Inter, sans-serif', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid #f1f5f9', background: 'white' }}>
+        <div style={{ padding: '10px 24px', fontSize: '12px', color: '#94a3b8', fontFamily: 'Inter, sans-serif', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'white' }}>
           <span><span style={{ color: '#94a3b8', fontWeight: 400 }}>Home</span> <span style={{ margin: '0 4px' }}>›</span><span style={{ color: '#1e293b', fontWeight: 700 }}>AI Materials</span></span>
           <button onClick={() => setShowWizard(true)} style={{ background: '#0AA182', color: 'white', border: '1px solid #0AA182', padding: '9px 12px', borderRadius: '8px', cursor: 'pointer', fontSize: '13px', fontFamily: 'Inter, sans-serif', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '10px', height: '42px', boxSizing: 'border-box' }}>
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
