@@ -1,6 +1,15 @@
 import { useState, useEffect, useRef } from 'react'
 import { getMaterials, uploadMaterial, finalizeMaterial, updateMaterialStatus, deleteMaterial } from '../api'
 
+/* ── Inlined from vuesax/linear/more.svg (project asset) ── */
+const MoreHorizIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M5 10C3.9 10 3 10.9 3 12C3 13.1 3.9 14 5 14C6.1 14 7 13.1 7 12C7 10.9 6.1 10 5 10Z" stroke="#404040" strokeWidth="1.5"/>
+    <path d="M19 10C17.9 10 17 10.9 17 12C17 13.1 17.9 14 19 14C20.1 14 21 13.1 21 12C21 10.9 20.1 10 19 10Z" stroke="#404040" strokeWidth="1.5"/>
+    <path d="M12 10C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10Z" stroke="#404040" strokeWidth="1.5"/>
+  </svg>
+)
+
 const SuspendIcon = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
@@ -479,7 +488,12 @@ function Materials() {
                       </td>
                       <td style={tdStyle}>
                         <div style={{ position: 'relative', display: 'inline-block' }}>
-                          <button onClick={(e) => { e.stopPropagation(); setOpenMenuId(openMenuId === item.id ? null : item.id) }} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#94a3b8', fontSize: '18px', letterSpacing: '1px', padding: '4px 8px' }}>···</button>
+                          <button
+                            onClick={(e) => { e.stopPropagation(); setOpenMenuId(openMenuId === item.id ? null : item.id) }}
+                            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '0', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '24px', height: '24px' }}
+                          >
+                            <MoreHorizIcon />
+                          </button>
                           {openMenuId === item.id && (
                             <div onClick={(e) => e.stopPropagation()} style={{ position: 'absolute', right: 0, top: '32px', background: 'white', borderRadius: '10px', boxShadow: '0 4px 24px rgba(0,0,0,0.12)', zIndex: 100, minWidth: '180px', overflow: 'hidden', border: '1px solid #f1f5f9' }}>
                               {item.status === 'active' ? (
