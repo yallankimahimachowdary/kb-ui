@@ -355,7 +355,7 @@ function Materials() {
 
         {/* Breadcrumb + Upload */}
         <div style={{ padding: '10px 24px', fontSize: '12px', color: '#94a3b8', fontFamily: 'Inter, sans-serif', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid #f1f5f9', background: 'white' }}>
-          <span>Home <span style={{ margin: '0 4px' }}>›</span><span style={{ color: '#1e293b', fontWeight: '500' }}>AI Materials</span></span>
+          <span><span style={{ color: '#94a3b8', fontWeight: 400 }}>Home</span> <span style={{ margin: '0 4px' }}>›</span><span style={{ color: '#1e293b', fontWeight: 700 }}>AI Materials</span></span>
           <button onClick={() => setShowWizard(true)} style={{ background: '#0AA182', color: 'white', border: '1px solid #0AA182', padding: '9px 12px', borderRadius: '8px', cursor: 'pointer', fontSize: '13px', fontFamily: 'Inter, sans-serif', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '10px', height: '42px', boxSizing: 'border-box' }}>
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M0 6H12" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -377,7 +377,7 @@ function Materials() {
                 <path d="M10.125 24.75H7.875C3.375 24.75 2.25 23.625 2.25 19.125V7.875C2.25 3.375 3.375 2.25 7.875 2.25H9.5625C11.25 2.25 11.6213 2.74501 12.2625 3.60001L13.95 5.85001C14.3775 6.41251 14.625 6.75 15.75 6.75H19.125C23.625 6.75 24.75 7.875 24.75 12.375V14.625" stroke="#1e293b" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M15.48 20.6101C12.8363 20.8013 12.8363 24.6263 15.48 24.8176H21.735C22.4888 24.8176 23.2313 24.5363 23.7825 24.03C25.6388 22.41 24.6487 19.17 22.2075 18.8663C21.33 13.59 13.7025 15.5925 15.5025 20.6213" stroke="#1e293b" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-              <span style={{ fontSize: '20px', fontWeight: 600, color: '#1e293b', fontFamily: 'Inter, sans-serif' }}>
+              <span style={{ fontSize: '24px', fontWeight: 400, color: '#000000', fontFamily: 'Inter, sans-serif' }}>
                 AI Materials
               </span>
             </div>
