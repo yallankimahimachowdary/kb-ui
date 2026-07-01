@@ -1,4 +1,4 @@
-const BASE_URL = 'https://team3-gllx.onrender.com'
+const BASE_URL = 'http://113.30.177.22:5008'
 
 // Get all materials (with optional search, page, size)
 export const getMaterials = async (page = 1, size = 12, search = '') => {
